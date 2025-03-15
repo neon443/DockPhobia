@@ -6,23 +6,6 @@
 	objectVersion = 77;
 	objects = {
 
-/* Begin PBXContainerItemProxy section */
-		A91E84AF2D82CF4300FC2E5F /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = A91E84952D82CF4100FC2E5F /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = A91E849C2D82CF4100FC2E5F;
-			remoteInfo = DockPhobia;
-		};
-		A91E84B92D82CF4300FC2E5F /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = A91E84952D82CF4100FC2E5F /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = A91E849C2D82CF4100FC2E5F;
-			remoteInfo = DockPhobia;
-		};
-/* End PBXContainerItemProxy section */
-
 /* Begin PBXCopyFilesBuildPhase section */
 		A98E7EA02D836FBB0004DA00 /* Embed XPC Services */ = {
 			isa = PBXCopyFilesBuildPhase;
@@ -38,8 +21,6 @@
 
 /* Begin PBXFileReference section */
 		A91E849D2D82CF4100FC2E5F /* DockPhobia.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DockPhobia.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		A91E84AE2D82CF4300FC2E5F /* DockPhobiaTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DockPhobiaTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		A91E84B82D82CF4300FC2E5F /* DockPhobiaUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DockPhobiaUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -68,20 +49,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		A91E84AB2D82CF4300FC2E5F /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		A91E84B52D82CF4300FC2E5F /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -99,8 +66,6 @@
 			isa = PBXGroup;
 			children = (
 				A91E849D2D82CF4100FC2E5F /* DockPhobia.app */,
-				A91E84AE2D82CF4300FC2E5F /* DockPhobiaTests.xctest */,
-				A91E84B82D82CF4300FC2E5F /* DockPhobiaUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -131,52 +96,6 @@
 			productReference = A91E849D2D82CF4100FC2E5F /* DockPhobia.app */;
 			productType = "com.apple.product-type.application";
 		};
-		A91E84AD2D82CF4300FC2E5F /* DockPhobiaTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = A91E84C52D82CF4300FC2E5F /* Build configuration list for PBXNativeTarget "DockPhobiaTests" */;
-			buildPhases = (
-				A91E84AA2D82CF4300FC2E5F /* Sources */,
-				A91E84AB2D82CF4300FC2E5F /* Frameworks */,
-				A91E84AC2D82CF4300FC2E5F /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				A91E84B02D82CF4300FC2E5F /* PBXTargetDependency */,
-			);
-			fileSystemSynchronizedGroups = (
-				A91E84B12D82CF4300FC2E5F /* DockPhobiaTests */,
-			);
-			name = DockPhobiaTests;
-			packageProductDependencies = (
-			);
-			productName = DockPhobiaTests;
-			productReference = A91E84AE2D82CF4300FC2E5F /* DockPhobiaTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
-		A91E84B72D82CF4300FC2E5F /* DockPhobiaUITests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = A91E84C82D82CF4300FC2E5F /* Build configuration list for PBXNativeTarget "DockPhobiaUITests" */;
-			buildPhases = (
-				A91E84B42D82CF4300FC2E5F /* Sources */,
-				A91E84B52D82CF4300FC2E5F /* Frameworks */,
-				A91E84B62D82CF4300FC2E5F /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				A91E84BA2D82CF4300FC2E5F /* PBXTargetDependency */,
-			);
-			fileSystemSynchronizedGroups = (
-				A91E84BB2D82CF4300FC2E5F /* DockPhobiaUITests */,
-			);
-			name = DockPhobiaUITests;
-			packageProductDependencies = (
-			);
-			productName = DockPhobiaUITests;
-			productReference = A91E84B82D82CF4300FC2E5F /* DockPhobiaUITests.xctest */;
-			productType = "com.apple.product-type.bundle.ui-testing";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -189,14 +108,6 @@
 				TargetAttributes = {
 					A91E849C2D82CF4100FC2E5F = {
 						CreatedOnToolsVersion = 16.2;
-					};
-					A91E84AD2D82CF4300FC2E5F = {
-						CreatedOnToolsVersion = 16.2;
-						TestTargetID = A91E849C2D82CF4100FC2E5F;
-					};
-					A91E84B72D82CF4300FC2E5F = {
-						CreatedOnToolsVersion = 16.2;
-						TestTargetID = A91E849C2D82CF4100FC2E5F;
 					};
 				};
 			};
@@ -215,28 +126,12 @@
 			projectRoot = "";
 			targets = (
 				A91E849C2D82CF4100FC2E5F /* DockPhobia */,
-				A91E84AD2D82CF4300FC2E5F /* DockPhobiaTests */,
-				A91E84B72D82CF4300FC2E5F /* DockPhobiaUITests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
 		A91E849B2D82CF4100FC2E5F /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		A91E84AC2D82CF4300FC2E5F /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		A91E84B62D82CF4300FC2E5F /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -253,34 +148,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		A91E84AA2D82CF4300FC2E5F /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		A91E84B42D82CF4300FC2E5F /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		A91E84B02D82CF4300FC2E5F /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = A91E849C2D82CF4100FC2E5F /* DockPhobia */;
-			targetProxy = A91E84AF2D82CF4300FC2E5F /* PBXContainerItemProxy */;
-		};
-		A91E84BA2D82CF4300FC2E5F /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = A91E849C2D82CF4100FC2E5F /* DockPhobia */;
-			targetProxy = A91E84B92D82CF4300FC2E5F /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		A91E84C02D82CF4300FC2E5F /* Debug */ = {
@@ -413,17 +281,21 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"DockPhobia/Preview Content\"";
 				DEVELOPMENT_TEAM = P6PV2R9443;
-				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_APP_SANDBOX = YES;
+				ENABLE_HARDENED_RUNTIME = NO;
 				ENABLE_PREVIEWS = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = DockPhobia/Info.plist;
 				INFOPLIST_KEY_LSUIElement = NO;
+				INFOPLIST_KEY_NSAppleEventsUsageDescription = "Needed to send AppleScript to move the Dock";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.neon443.DockPhobia;
+				PRODUCT_BUNDLE_IDENTIFIER = dev.neon443.DockPhobia;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -442,88 +314,24 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"DockPhobia/Preview Content\"";
 				DEVELOPMENT_TEAM = P6PV2R9443;
-				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_APP_SANDBOX = YES;
+				ENABLE_HARDENED_RUNTIME = NO;
 				ENABLE_PREVIEWS = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = DockPhobia/Info.plist;
 				INFOPLIST_KEY_LSUIElement = NO;
+				INFOPLIST_KEY_NSAppleEventsUsageDescription = "Needed to send AppleScript to move the Dock";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.neon443.DockPhobia;
+				PRODUCT_BUNDLE_IDENTIFIER = dev.neon443.DockPhobia;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-			};
-			name = Release;
-		};
-		A91E84C62D82CF4300FC2E5F /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = P6PV2R9443;
-				GENERATE_INFOPLIST_FILE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 15.2;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.neon443.DockPhobiaTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/DockPhobia.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/DockPhobia";
-			};
-			name = Debug;
-		};
-		A91E84C72D82CF4300FC2E5F /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = P6PV2R9443;
-				GENERATE_INFOPLIST_FILE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 15.2;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.neon443.DockPhobiaTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/DockPhobia.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/DockPhobia";
-			};
-			name = Release;
-		};
-		A91E84C92D82CF4300FC2E5F /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = P6PV2R9443;
-				GENERATE_INFOPLIST_FILE = YES;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.neon443.DockPhobiaUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TEST_TARGET_NAME = DockPhobia;
-			};
-			name = Debug;
-		};
-		A91E84CA2D82CF4300FC2E5F /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = P6PV2R9443;
-				GENERATE_INFOPLIST_FILE = YES;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.neon443.DockPhobiaUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TEST_TARGET_NAME = DockPhobia;
 			};
 			name = Release;
 		};
@@ -544,24 +352,6 @@
 			buildConfigurations = (
 				A91E84C32D82CF4300FC2E5F /* Debug */,
 				A91E84C42D82CF4300FC2E5F /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		A91E84C52D82CF4300FC2E5F /* Build configuration list for PBXNativeTarget "DockPhobiaTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				A91E84C62D82CF4300FC2E5F /* Debug */,
-				A91E84C72D82CF4300FC2E5F /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		A91E84C82D82CF4300FC2E5F /* Build configuration list for PBXNativeTarget "DockPhobiaUITests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				A91E84C92D82CF4300FC2E5F /* Debug */,
-				A91E84CA2D82CF4300FC2E5F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

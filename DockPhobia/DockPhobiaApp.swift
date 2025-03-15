@@ -45,24 +45,6 @@ import CoreGraphics
 ////}
 import Foundation
 
-func moveDock() {
-	let process = Process()
-	process.executableURL = URL(fileURLWithPath: "/usr/bin/osascript")
-	
-	if let scriptPath = Bundle.main.path(forResource: "/Users/neon443/Documents/Xcode/DockPhobia/DockPhobia/script.scpt", ofType: "scpt") {
-		process.arguments = [scriptPath]
-		
-		do {
-			try process.run()
-			process.waitUntilExit()
-		} catch {
-			print("error")
-		}
-	} else {
-		print("error script not found")
-	}
-}
-
 @main
 struct DockPhobiaApp: App {
 	enum DockPosition: String {
@@ -71,18 +53,56 @@ struct DockPhobiaApp: App {
 		case bottom
 	}
 	
-	@State var enabled: Bool = true
-	
-	var body: some Scene {
-		WindowGroup {
-			ContentView(enabled: $enabled)
+	@State var preferencesOpen: Bool = false
+	@State var isTracking: Bool = false
+	func toggleTracking() {
+		if isTracking {
+			stopTrackingMouse()
+		} else {
+			startTrackingMouse()
 		}
-		MenuBarExtra("Dock Phobia", systemImage: "cursorarrow\(enabled ? "" : ".slash")") {
-			Toggle(enabled ? "Enabled" : "Disabled", isOn: $enabled)
+		isTracking.toggle()
+	}
+	var body: some Scene {
+		//		WindowGroup {
+		//			ContentView(isTracking: $isTracking)
+		//		}
+		MenuBarExtra("Dock Phobia", systemImage: "cursorarrow\(isTracking ? "" : ".slash")") {
+			Text(isTracking ? "Enabled" : "Disabled")
+			Text("\(getScreenSize())")
+			Button("Toggle tracking") {
+				toggleTracking()
+			}
+			.keyboardShortcut(" ", modifiers: [])
 			
 			Divider()
-			Button("Right") {
-				moveDock()
+			Button("Settings") {
+				preferencesOpen.toggle()
+			}
+			.keyboardShortcut(",")
+			Divider()
+			Button("try shell") {
+				print(shell("echo hello") ?? "fuck me")
+			}
+			Divider()
+			Button("Move Dock to Right") {
+				moveDock("right")
+			}
+			Divider()
+			Button("Move Dock to Right2") {
+				moveDockWithDefaults("right")
+			}
+			Button("Move Dock to Left") {
+				moveDock("left")
+			}
+			Button("Move Dock to Bottom") {
+				moveDock("bottom")
+			}
+			Button("Get Dock orientation") {
+				print(getDockSide())
+			}
+			Button("Get Dock Height Percentage") {
+				print(getDockHeightPercentage())
 			}
 			Button("Quit") {
 				NSApplication.shared.terminate(nil)
@@ -92,11 +112,65 @@ struct DockPhobiaApp: App {
 	}
 }
 
+func shell(_ command: String) -> (output: String?, error: String?) {
+	let process = Process()
+	let pipe = Pipe()
+	let pipeError = Pipe()
+	
+	process.executableURL = URL(fileURLWithPath: "/bin/bash")
+	process.arguments = ["-c", command]
+	process.standardOutput = pipe
+	process.standardError = pipeError
+	
+	let outputHandle = pipe.fileHandleForReading
+	let errorHandle = pipeError.fileHandleForReading
+	
+	process.launch()
+	process.waitUntilExit()
+	
+	let data = outputHandle.readDataToEndOfFile()
+	let dataError = errorHandle.readDataToEndOfFile()
+	
+	let output = String(data: data, encoding: .utf8)?.trimmingCharacters(in: .whitespacesAndNewlines)
+	let outputError = String(data: dataError, encoding: .utf8)?.trimmingCharacters(in: .whitespacesAndNewlines)
+	
+	return (output, outputError)
+}
+
+func getDockSide() -> String {
+	let result = shell("defaults read com.apple.Dock orientation")
+	
+	if let error = result.error {
+		print("Error: \(error)")
+		return "unknown"
+	}
+	
+	if let output = result.output, !output.isEmpty {
+		print("Dock is on the \(output)")
+		return output
+	}
+	
+	return "unknown"
+}
+
 // global event tap
 var eventTap: CFMachPort?
 
+func getDockHeightPercentage() -> Double {
+	guard let screen = NSScreen.main else { return 0 }
+	
+	let fullHeight = screen.frame.height
+	let visibleHeight = screen.visibleFrame.height
+	
+	let dockHeight = fullHeight - visibleHeight
+	let percentage = (dockHeight / fullHeight) * 100
+	
+	return percentage
+}
+
 func startTrackingMouse() {
 	let mask = CGEventMask(1 << CGEventType.mouseMoved.rawValue)
+	let screenDimensions = getScreenSize()
 	
 	//try creating event tap
 	eventTap = CGEvent.tapCreate(
@@ -122,5 +196,88 @@ func startTrackingMouse() {
 		print("    mouse tracking started!")
 	} else {
 		print("    failed to create event tap.")
+	}
+}
+
+
+func stopTrackingMouse() {
+	if let eventTap = eventTap {
+		// disable event tap
+		CGEvent.tapEnable(tap: eventTap, enable: false)
+		
+		// stops run loop
+		CFRunLoopPerformBlock(CFRunLoopGetMain(), CFRunLoopMode.defaultMode.rawValue) {
+			CFRunLoopStop(CFRunLoopGetMain())
+		}
+		
+		print("    mouse tracking has stopped")
+	} else {
+		print("    no active event tap to stop")
+	}
+}
+
+func getScreenSize() -> (x: CGFloat, y: CGFloat) {
+	if let screen = NSScreen.main {
+		let screenFrame = screen.frame
+		let maxWidth = screenFrame.width
+		let maxHeight = screenFrame.height
+//		print("screen res: \(maxWidth)x\(maxHeight)")
+		return (maxWidth, maxHeight)
+	} else {
+		print("you have no screen")
+		print("what the fuck")
+		return (-1.0, -1.0) //help me... i am not accounting for edge cases like this shit
+	}
+}
+
+func moveDock(_ to: String) {
+	print(NSApplication.shared.isAccessibilityEnabled())
+	let validPositions = ["left", "right", "bottom"]
+	guard validPositions.contains(to) else {
+		print("Invalid Dock position: \(to)")
+		return
+	}
+	
+	let script = """
+	tell application "System Events"
+		tell dock preferences
+			set screen edge to \(to)
+		end tell
+	end tell
+	"""
+	
+	let process = Process()
+	process.executableURL = URL(fileURLWithPath: "/usr/bin/osascript")
+	process.arguments = ["-e", script]
+	
+	do {
+		try process.run()
+		process.waitUntilExit()
+		
+		let status = process.terminationStatus
+		if status == 0 {
+			print("Dock moved to \(to)")
+		} else {
+			print("Failed to move dock, status: \(status)")
+		}
+	} catch {
+		print("Error running AppleScript: \(error)")
+	}
+}
+
+func moveDockWithDefaults(_ to: String) {
+	let validPositions = ["left", "right", "bottom"]
+	guard validPositions.contains(to) else {
+		print("Invalid Dock position: \(to)")
+		return
+	}
+	
+	let command = "defaults write com.apple.Dock orientation -string \(to);launchctl kickstart -k gui/$(id -u)/com.apple.Dock"
+	let result = shell(command)
+	
+	if let error = result.error {
+		print("Error moving Dock: \(error)")
+	} else {
+		print("Dock moved to \(to)")
 	}
 }

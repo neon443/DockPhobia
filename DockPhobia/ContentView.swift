@@ -8,22 +8,21 @@
 import SwiftUI
 
 struct ContentView: View {
-	@Binding var enabled: Bool
+	@Binding var isTracking: Bool
 	@State var mouseloc = NSEvent.mouseLocation
+	
     var body: some View {
         VStack {
-			Text("\(NSEvent.mouseLocation)")
-			Toggle("on", isOn: $enabled)
-				.toggleStyle(SwitchToggleStyle())
+			Text("Screen size: \(getScreenSize())")
             Image(systemName: "globe")
                 .imageScale(.large)
                 .foregroundStyle(.tint)
             Text("Hello, world!")
 			Spacer()
-			Button("df") {
+			Button("Start") {
 				startTrackingMouse()
 			}
-			Button("undf") {
+			Button("Stop") {
 				stopTrackingMouse()
 			}
 			Button() {
@@ -37,5 +36,5 @@ struct ContentView: View {
 }
 
 #Preview {
-	ContentView(enabled: .constant(true))
+	ContentView(isTracking: .constant(true))
 }
