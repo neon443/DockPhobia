@@ -6,7 +6,8 @@
 	<string>allow it</string>
 	<key>NSAccessibilitysUsageDescription</key>
 	<string>allow it</string>
-	<com.apple.security.automation.apple-events>
+	<key>com.apple.security.automation.apple-events<>
+	<true>
 	<key>com.apple.security.scripting-targets</key>
 	<dict>
 		<key>com.apple.mail</key>
