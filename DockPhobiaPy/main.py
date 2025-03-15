@@ -53,7 +53,7 @@ def getDockHeight():
 
 	dockHeight = fullHeight - visibleHeight
 	percentage = (dockHeight / fullHeight)
-	return percentage+0.03 # increase size
+	return percentage+0.05 # increase size
 
 screenSize = getScreenSize()
 
@@ -116,4 +116,4 @@ while True:
 				dockSide = "left"
 				#mouse is at right but bottom half
 
-	time.sleep(0.01)
+#	time.sleep(0.01)
