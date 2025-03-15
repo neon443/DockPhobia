@@ -29,16 +29,6 @@
 			path = DockPhobia;
 			sourceTree = "<group>";
 		};
-		A91E84B12D82CF4300FC2E5F /* DockPhobiaTests */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			path = DockPhobiaTests;
-			sourceTree = "<group>";
-		};
-		A91E84BB2D82CF4300FC2E5F /* DockPhobiaUITests */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			path = DockPhobiaUITests;
-			sourceTree = "<group>";
-		};
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,8 +46,6 @@
 			isa = PBXGroup;
 			children = (
 				A91E849F2D82CF4100FC2E5F /* DockPhobia */,
-				A91E84B12D82CF4300FC2E5F /* DockPhobiaTests */,
-				A91E84BB2D82CF4300FC2E5F /* DockPhobiaUITests */,
 				A91E849E2D82CF4100FC2E5F /* Products */,
 			);
 			sourceTree = "<group>";

@@ -1,0 +1,20 @@
+{
+  "actions" : {
+    "run" : {
+      "postActions" : [
+        {
+          "script" : ". *Py\/venv\/bin\/activate\npython3 *Py\/main.py",
+          "type" : "runScript"
+        }
+      ]
+    }
+  },
+  "extension" : {
+    "identifier" : "net.danwatson.Python",
+    "name" : "Python"
+  },
+  "extensionTemplate" : "virtualenv",
+  "extensionValues" : {
+    "script" : "DockPhobiaPy\/main.py"
+  }
+}

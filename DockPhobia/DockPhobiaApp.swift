@@ -89,9 +89,6 @@ struct DockPhobiaApp: App {
 				moveDock("right")
 			}
 			Divider()
-			Button("Move Dock to Right2") {
-				moveDockWithDefaults("right")
-			}
 			Button("Move Dock to Left") {
 				moveDock("left")
 			}
@@ -262,22 +259,5 @@ func moveDock(_ to: String) {
 		}
 	} catch {
 		print("Error running AppleScript: \(error)")
-	}
-}
-
-func moveDockWithDefaults(_ to: String) {
-	let validPositions = ["left", "right", "bottom"]
-	guard validPositions.contains(to) else {
-		print("Invalid Dock position: \(to)")
-		return
-	}
-	
-	let command = "defaults write com.apple.Dock orientation -string \(to);launchctl kickstart -k gui/$(id -u)/com.apple.Dock"
-	let result = shell(command)
-	
-	if let error = result.error {
-		print("Error moving Dock: \(error)")
-	} else {
-		print("Dock moved to \(to)")
 	}
 }
