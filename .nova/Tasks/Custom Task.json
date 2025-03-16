@@ -1,0 +1,17 @@
+{
+  "actions" : {
+    "build" : {
+      "enabled" : true,
+      "script" : "#!\/bin\/sh\ncd DockPhobiaPy\npython3 -m venv venv\n. venv\/bin\/activate\npip3 install -r requirements.txt"
+    },
+    "clean" : {
+      "enabled" : true,
+      "script" : "#!\/bin\/sh\ncd DockPhobiaPy\n. venv\/bin\/activate\npip3 freeze > requirements.txt\nrm -rf venv"
+    },
+    "run" : {
+      "enabled" : true,
+      "script" : "#!\/bin\/sh\ncd DockPhobiaPy\n. venv\/bin\/activate\npython3 main.py"
+    }
+  },
+  "openLogOnRun" : "start"
+}
