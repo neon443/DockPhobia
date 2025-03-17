@@ -1,4 +1,6 @@
 {
   "python.analysis.typeCheckingMode" : "strict",
-  "python.pipRequirements" : "DockPhobiaPy\/requirements.txt"
+  "python.interpreter" : ".\/DockPhobiaPy\/venv\/bin\/python3",
+  "python.pipRequirements" : "DockPhobiaPy\/requirements.txt",
+  "python.pythonPath" : "\/Users\/neon443\/Documents\/Xcode\/DockPhobia\/DockPhobiaPy\/venv\/bin\/python3"
 }

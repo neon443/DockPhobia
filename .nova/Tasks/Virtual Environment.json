@@ -1,0 +1,21 @@
+{
+  "actions" : {
+    "run" : {
+      "postActions" : [
+        {
+          "script" : "python3 main.py",
+          "type" : "runScript"
+        }
+      ]
+    }
+  },
+  "extension" : {
+    "identifier" : "net.danwatson.Python",
+    "name" : "Python"
+  },
+  "extensionTemplate" : "virtualenv",
+  "extensionValues" : {
+    "script" : "*Py\/main.py",
+    "workdir" : "."
+  }
+}

@@ -1,0 +1,37 @@
+{
+  "actions" : {
+    "build" : {
+      "postActions" : [
+        {
+          "script" : "cd DockPhobiaPy\npython3 -m venv venv\n. venv\/bin\/activate\npip3 install -r requirements.txt",
+          "type" : "runScript"
+        }
+      ]
+    },
+    "clean" : {
+      "postActions" : [
+        {
+          "script" : "cd DockPhobiaPy\n. venv\/bin\/activate\npip3 freeze > requirements.txt\nrm -rf venv",
+          "type" : "runScript"
+        }
+      ]
+    },
+    "run" : {
+      "postActions" : [
+        {
+          "script" : ". DockPhobiaPy\/yvenv\/bin\/activate",
+          "type" : "runScript"
+        }
+      ]
+    }
+  },
+  "extension" : {
+    "identifier" : "panic.Python",
+    "name" : "Python"
+  },
+  "extensionTemplate" : "pythonDebug",
+  "extensionValues" : {
+    "python.debug.script" : "main.py",
+    "python.debug.workingDirectory" : "DockPhobiaPy"
+  }
+}
