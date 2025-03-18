@@ -139,6 +139,39 @@ func shell(_ command: String) -> (output: String?, error: String?) {
 	return (output: output, error: outputError)
 }
 
+func osascript(_ script: String) -> (output: String?, error: String?) {
+	let process = Process()
+	let outputPipe = Pipe()
+	let outputErrorPipe = Pipe()
+	
+	process.executableURL = URL(fileURLWithPath: "/usr/bin/osascript")
+	process.arguments = ["-e", script]
+	process.standardOutput = outputPipe
+	process.standardError = outputErrorPipe
+	
+	process.launch()
+	process.waitUntilExit()
+		
+	let outputHandle = outputPipe.fileHandleForReading.readDataToEndOfFile()
+	let outputErrorHandle = outputErrorPipe.fileHandleForReading.readDataToEndOfFile()
+	
+	let outputData = String(
+		data: outputHandle,
+		encoding: .utf8
+	)?
+		.trimmingCharacters(
+			in: .whitespacesAndNewlines
+		)
+	let outputErrorData = String(
+		data: outputErrorHandle,
+		encoding: .utf8
+	)?
+		.trimmingCharacters(
+			in: .whitespacesAndNewlines
+		)
+	return (outputData, outputErrorData)
+}
+
 func getDockSide() -> String {
 	let result = shell("defaults read com.apple.Dock orientation")
 	print("dock is on the \(result.output ?? "idk")")
@@ -162,7 +195,6 @@ func getDockHeightPercentage() -> Double {
 
 func startTrackingMouse() {
 	let mask = CGEventMask(1 << CGEventType.mouseMoved.rawValue)
-	let screenDimensions = getScreenSize()
 	
 	//try creating event tap
 	eventTap = CGEvent.tapCreate(
@@ -223,13 +255,11 @@ func getScreenSize() -> (x: CGFloat, y: CGFloat) {
 }
 
 func moveDock(_ to: String) {
-	print(NSApplication.shared.isAccessibilityEnabled())
-	let validPositions = ["left", "right", "bottom"]
-	guard validPositions.contains(to) else {
-		print("Invalid Dock position: \(to)")
+	let validPos = ["left", "bottom", "right"]
+	guard validPos.contains(to) else {
+		print("invalid dock position")
 		return
 	}
-	
 	let script = """
 	tell application "System Events"
 		tell dock preferences
@@ -237,22 +267,6 @@ func moveDock(_ to: String) {
 		end tell
 	end tell
 	"""
-	
-	let process = Process()
-	process.executableURL = URL(fileURLWithPath: "/usr/bin/osascript")
-	process.arguments = ["-e", script]
-	
-	do {
-		try process.run()
-		process.waitUntilExit()
-		
-		let status = process.terminationStatus
-		if status == 0 {
-			print("Dock moved to \(to)")
-		} else {
-			print("Failed to move dock, status: \(status)")
-		}
-	} catch {
-		print("Error running AppleScript: \(error)")
-	}
+	let result = osascript(script)
+	return
 }
