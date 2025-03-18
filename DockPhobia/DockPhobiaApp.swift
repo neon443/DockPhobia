@@ -139,7 +139,7 @@ func shell(_ command: String) -> (output: String?, error: String?) {
 	return (output: output, error: outputError)
 }
 
-func osascript(_ script: String) -> (output: String?, error: String?) {
+func osascript(_ script: String) -> String? {
 	let process = Process()
 	let outputPipe = Pipe()
 	let outputErrorPipe = Pipe()
@@ -169,7 +169,10 @@ func osascript(_ script: String) -> (output: String?, error: String?) {
 		.trimmingCharacters(
 			in: .whitespacesAndNewlines
 		)
-	return (outputData, outputErrorData)
+	if outputErrorData != "" {
+		print(outputErrorData as Any)
+	}
+	return outputData
 }
 
 func getDockSide() -> String {
@@ -240,18 +243,19 @@ func stopTrackingMouse() {
 	}
 }
 
-func getScreenSize() -> (x: CGFloat, y: CGFloat) {
-	if let screen = NSScreen.main {
-		let screenFrame = screen.frame
-		let maxWidth = screenFrame.width
-		let maxHeight = screenFrame.height
-//		print("screen res: \(maxWidth)x\(maxHeight)")
-		return (maxWidth, maxHeight)
-	} else {
-		print("you have no screen")
-		print("what the fuck")
-		return (-1.0, -1.0) //help me... i am not accounting for edge cases like this shit
-	}
+func getScreenSize() -> (x: Int, y: Int) {
+	let script = """
+ tell application "Finder"
+    get bounds of window of desktop
+ end tell
+ """
+	let result = osascript(script)?.dropFirst(6).split(separator: ", ")
+	// removes the "0, 0, " and splits into an arr
+	let resultTuple = (
+		Int( result![0] )!,
+		Int( result![1] )!
+	)
+	return resultTuple
 }
 
 func moveDock(_ to: String) {
