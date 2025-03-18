@@ -82,7 +82,7 @@ struct DockPhobiaApp: App {
 			.keyboardShortcut(",")
 			Divider()
 			Button("try shell") {
-				print(shell("echo hello") ?? "fuck me")
+				print(shell("echo hello"))
 			}
 			Divider()
 			Button("Move Dock to Right") {
@@ -114,24 +114,29 @@ func shell(_ command: String) -> (output: String?, error: String?) {
 	let pipe = Pipe()
 	let pipeError = Pipe()
 	
-	process.executableURL = URL(fileURLWithPath: "/bin/bash")
+	process.executableURL = URL(fileURLWithPath: "/bin/zsh")
 	process.arguments = ["-c", command]
 	process.standardOutput = pipe
 	process.standardError = pipeError
 	
 	let outputHandle = pipe.fileHandleForReading
-	let errorHandle = pipeError.fileHandleForReading
+	let outputErrorHandle = pipeError.fileHandleForReading
 	
 	process.launch()
 	process.waitUntilExit()
 	
 	let data = outputHandle.readDataToEndOfFile()
-	let dataError = errorHandle.readDataToEndOfFile()
+	let dataError = outputErrorHandle.readDataToEndOfFile()
 	
-	let output = String(data: data, encoding: .utf8)?.trimmingCharacters(in: .whitespacesAndNewlines)
-	let outputError = String(data: dataError, encoding: .utf8)?.trimmingCharacters(in: .whitespacesAndNewlines)
-	
-	return (output, outputError)
+	let output = String(
+		data: data,
+		encoding: .utf8
+	)?.trimmingCharacters(in: .whitespacesAndNewlines)
+	let outputError = String(
+		data: dataError,
+		encoding: .utf8
+	)?.trimmingCharacters(in: .whitespacesAndNewlines)
+	return (output: output, error: outputError)
 }
 
 func getDockSide() -> String {
