@@ -2,7 +2,6 @@ from pynput.mouse import Controller
 import subprocess
 import AppKit
 import time
-import pdb
 from memory_profiler import profile
 
 mouse = Controller()
@@ -89,7 +88,6 @@ def run_loop():
 	global dockSide, dockFromBottom, dockFromLeft, dockFromRight, startedOutAt
 
 	while True:
-	# for i in range(0,100000):
 		if dockSide == "bottom":
 			if mouse.position[1] > dockFromBottom:
 				if mouse.position[0] < screenSize[0]/2:
@@ -101,7 +99,6 @@ def run_loop():
 					dockSide = "left"
 					#mouse is at bottom but on the right of screen
 				# neverbeenside = False
-
 		elif dockSide == "left":
 			if mouse.position[0] < dockFromLeft:
 				if mouse.position[1] < screenSize[1]/2:
@@ -112,7 +109,6 @@ def run_loop():
 					moveDock("right")
 					dockSide = "right"
 					#mouse is at left but bottom half
-
 		elif dockSide == "right":
 			if mouse.position[0] > dockFromRight:
 				if mouse.position[1] < screenSize[1]/2:
@@ -123,7 +119,6 @@ def run_loop():
 					moveDock("left")
 					dockSide = "left"
 					#mouse is at right but bottom half
-
 		if startedOutAt == "":
 			continue
 		elif startedOutAt == "bottom" and dockSide != "bottom":
