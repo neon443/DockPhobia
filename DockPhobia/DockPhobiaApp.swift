@@ -141,18 +141,8 @@ func shell(_ command: String) -> (output: String?, error: String?) {
 
 func getDockSide() -> String {
 	let result = shell("defaults read com.apple.Dock orientation")
-	
-	if let error = result.error {
-		print("Error: \(error)")
-		return "unknown"
-	}
-	
-	if let output = result.output, !output.isEmpty {
-		print("Dock is on the \(output)")
-		return output
-	}
-	
-	return "unknown"
+	print("dock is on the \(result.output ?? "idk")")
+	return result.output ?? "unknown"
 }
 
 // global event tap
@@ -182,7 +172,7 @@ func startTrackingMouse() {
 		eventsOfInterest: mask,
 		callback: { (proxy, type, event, userInfo) -> Unmanaged<CGEvent>? in
 			let location = event.location
-			print("mouse at \(location)")
+//			print("mouse at \(location)")
 			//TODO: add Dock moving here
 			return Unmanaged.passRetained(event)
 		},

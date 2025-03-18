@@ -7,17 +7,47 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "43FA2B17-A22F-4470-ABDF-93C565F4F12F"
-            shouldBeEnabled = "Yes"
+            uuid = "6F6CFA28-932B-49B9-8838-CF4194EDBCCF"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "DockPhobia/DockPhobiaApp.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "139"
-            endingLineNumber = "139"
-            landmarkName = "shell(_:)"
+            startingLineNumber = "145"
+            endingLineNumber = "145"
+            landmarkName = "getDockSide()"
             landmarkType = "9">
+            <Locations>
+               <Location
+                  uuid = "6F6CFA28-932B-49B9-8838-CF4194EDBCCF - 71947627bacaba5"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "DockPhobia.getDockSide() -&gt; Swift.String"
+                  moduleName = "DockPhobia.debug.dylib"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/neon443/Documents/Xcode/DockPhobia/DockPhobia/DockPhobiaApp.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "144"
+                  endingLineNumber = "144">
+               </Location>
+               <Location
+                  uuid = "6F6CFA28-932B-49B9-8838-CF4194EDBCCF - 71947627bacab84"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "DockPhobia.getDockSide() -&gt; Swift.String"
+                  moduleName = "DockPhobia.debug.dylib"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/neon443/Documents/Xcode/DockPhobia/DockPhobia/DockPhobiaApp.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "145"
+                  endingLineNumber = "145">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>
