@@ -82,25 +82,36 @@ struct DockPhobiaApp: App {
 			.keyboardShortcut(",")
 			Divider()
 			Button("try shell") {
-				print(shell("echo hello"))
+				print(shell("echo hello") as Any)
 			}
 			Divider()
 			Button("Move Dock to Right") {
 				moveDock("right")
 			}
-			Divider()
 			Button("Move Dock to Left") {
 				moveDock("left")
 			}
 			Button("Move Dock to Bottom") {
 				moveDock("bottom")
 			}
+			Divider()
 			Button("Get Dock orientation") {
 				print(getDockSide())
 			}
 			Button("Get Dock Height Percentage") {
-				print(getDockHeightPercentage())
+				print(getDockHeight())
 			}
+			Divider()
+			Button("calcdockFromBottom") {
+				print(calcDockFromBottom())
+			}
+			Button("calc dock from right") {
+				print(calcDockFromRight())
+			}
+			Button("calc dock from left") {
+				print(calcDockFromLeft())
+			}
+			Divider()
 			Button("Quit") {
 				NSApplication.shared.terminate(nil)
 			}
@@ -109,7 +120,7 @@ struct DockPhobiaApp: App {
 	}
 }
 
-func shell(_ command: String) -> (output: String?, error: String?) {
+func shell(_ command: String) -> String? {
 	let process = Process()
 	let pipe = Pipe()
 	let pipeError = Pipe()
@@ -136,7 +147,11 @@ func shell(_ command: String) -> (output: String?, error: String?) {
 		data: dataError,
 		encoding: .utf8
 	)?.trimmingCharacters(in: .whitespacesAndNewlines)
-	return (output: output, error: outputError)
+	
+	if outputError != "" {
+		print(outputError as Any)
+	}
+	return output
 }
 
 func osascript(_ script: String) -> String? {
@@ -177,23 +192,52 @@ func osascript(_ script: String) -> String? {
 
 func getDockSide() -> String {
 	let result = shell("defaults read com.apple.Dock orientation")
-	print("dock is on the \(result.output ?? "idk")")
-	return result.output ?? "unknown"
+	print("dock is on the \(result ?? "idk")")
+	return result ?? "unknown"
 }
 
 // global event tap
 var eventTap: CFMachPort?
 
-func getDockHeightPercentage() -> Double {
-	guard let screen = NSScreen.main else { return 0 }
+func getDockHeight() -> Double {
+	guard let screen = NSScreen.main else {
+		return 0
+	}
 	
-	let fullHeight = screen.frame.height
+	let dockSide = getDockSide()
+	let screenDimensions = getScreenSize()
+	let width = screenDimensions.x
+	let height = screenDimensions.y
 	let visibleHeight = screen.visibleFrame.height
 	
-	let dockHeight = fullHeight - visibleHeight
-	let percentage = (dockHeight / fullHeight) * 100
+	let perpendicularToDock: CGFloat
+	if dockSide == "bottom" {
+		perpendicularToDock = height
+	} else {
+		perpendicularToDock = width
+	}
 	
-	return percentage
+	let dockHeight = CGFloat(height) - visibleHeight
+	let percentage = (dockHeight / perpendicularToDock)
+	return Double(percentage)
+}
+
+func calcDockFromBottom() -> CGFloat {
+	let screenSize = getScreenSize()
+	let dockHeight = getDockHeight()
+	return screenSize.y - (screenSize.y * dockHeight)
+}
+
+func calcDockFromRight() -> CGFloat {
+	let screenSize = getScreenSize()
+	let dockHeight = getDockHeight()
+	return screenSize.x - (screenSize.x * dockHeight)
+}
+
+func calcDockFromLeft() -> CGFloat {
+	let screenSize = getScreenSize()
+	let dockHeight = getDockHeight()
+	return screenSize.x * dockHeight
 }
 
 func startTrackingMouse() {
@@ -206,8 +250,9 @@ func startTrackingMouse() {
 		options: CGEventTapOptions.defaultTap,
 		eventsOfInterest: mask,
 		callback: { (proxy, type, event, userInfo) -> Unmanaged<CGEvent>? in
-			let location = event.location
+//			let location = event.location
 //			print("mouse at \(location)")
+//			print("mouse at \(event.location)")
 			//TODO: add Dock moving here
 			return Unmanaged.passRetained(event)
 		},
@@ -243,7 +288,7 @@ func stopTrackingMouse() {
 	}
 }
 
-func getScreenSize() -> (x: Int, y: Int) {
+func getScreenSize() -> (x: CGFloat, y: CGFloat) {
 	let script = """
  tell application "Finder"
     get bounds of window of desktop
@@ -252,8 +297,16 @@ func getScreenSize() -> (x: Int, y: Int) {
 	let result = osascript(script)?.dropFirst(6).split(separator: ", ")
 	// removes the "0, 0, " and splits into an arr
 	let resultTuple = (
-		Int( result![0] )!,
-		Int( result![1] )!
+		CGFloat(
+			Int(
+				result![0]
+			)!
+		),
+		CGFloat(
+			Int(
+				result![1]
+			)!
+		)
 	)
 	return resultTuple
 }
@@ -271,6 +324,6 @@ func moveDock(_ to: String) {
 		end tell
 	end tell
 	"""
-	let result = osascript(script)
+	osascript(script)
 	return
 }
