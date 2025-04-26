@@ -4,16 +4,7 @@
 <dict>
 	<key>NSAppleEventsUsageDescription</key>
 	<string>allow it</string>
-	<key>NSAccessibilitysUsageDescription</key>
-	<string>allow it</string>
 	<key>com.apple.security.automation.apple-events</key>
 	<true/>
-	<key>com.apple.security.scripting-targets</key>
-	<dict>
-		<key>com.apple.mail</key>
-		<array>
-			<string>com.apple.mail.compose</string>
-		</array>
-	</dict>
 </dict>
 </plist>

@@ -165,7 +165,7 @@ func osascript(_ script: String) -> String? {
 	process.standardError = outputErrorPipe
 	
 	process.launch()
-	process.waitUntilExit()
+//	process.waitUntilExit()
 		
 	let outputHandle = outputPipe.fileHandleForReading.readDataToEndOfFile()
 	let outputErrorHandle = outputErrorPipe.fileHandleForReading.readDataToEndOfFile()
@@ -242,7 +242,8 @@ func calcDockFromLeft() -> CGFloat {
 
 func startTrackingMouse() {
 	let mask = CGEventMask(1 << CGEventType.mouseMoved.rawValue)
-	
+	var dockSide = getDockSide()
+	var lastMove = Date.now
 	//try creating event tap
 	eventTap = CGEvent.tapCreate(
 		tap: .cgSessionEventTap,
@@ -254,6 +255,26 @@ func startTrackingMouse() {
 //			print("mouse at \(location)")
 //			print("mouse at \(event.location)")
 			//TODO: add Dock moving here
+			var lastDockMoveTime = Date()
+			let debounceInterval: TimeInterval = 0.1
+			if Date().timeIntervalSince(lastDockMoveTime) > debounceInterval {
+				if event.location.y > 1000 {
+					lastDockMoveTime = Date()
+					Task {
+						moveDock("left")
+					}
+				} else if event.location.x < 100 {
+					lastDockMoveTime = Date()
+					Task {
+						moveDock("right")
+					}
+				} else if event.location.x > 1600 {
+					lastDockMoveTime = Date()
+					Task {
+						moveDock("bottom")
+					}
+				}
+			}
 			return Unmanaged.passRetained(event)
 		},
 		userInfo: nil
@@ -270,7 +291,6 @@ func startTrackingMouse() {
 		print("    failed to create event tap.")
 	}
 }
-
 
 func stopTrackingMouse() {
 	if let eventTap = eventTap {
@@ -312,11 +332,11 @@ func getScreenSize() -> (x: CGFloat, y: CGFloat) {
 }
 
 func moveDock(_ to: String) {
-	let validPos = ["left", "bottom", "right"]
-	guard validPos.contains(to) else {
-		print("invalid dock position")
-		return
-	}
+//	let validPos = ["left", "bottom", "right"]
+//	guard validPos.contains(to) else {
+//		print("invalid dock position")
+//		return
+//	}
 	let script = """
 	tell application "System Events"
 		tell dock preferences
