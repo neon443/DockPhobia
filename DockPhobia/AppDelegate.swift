@@ -13,6 +13,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 	
 	@IBOutlet var window: NSWindow!
 	
+	@IBAction func startStopButton(_ sender: Any) {
+		print("button pressed")
+	}
 	var mouseTracker = MouseTracker()
 	
 	

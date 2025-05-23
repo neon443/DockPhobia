@@ -443,11 +443,14 @@
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="system"/>
                         </buttonCell>
+                        <connections>
+                            <action selector="startStopButton:" target="Voe-Tx-rLC" id="53m-Sw-2tA"/>
+                        </connections>
                     </button>
                     <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ucs-Y5-3jG">
                         <rect key="frame" x="112" y="72" width="127" height="65"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <buttonCell key="cell" type="smallSquare" title="Start/Stop" bezelStyle="smallSquare" image="NSAddTemplate" catalog="system" imagePosition="overlaps" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="OFW-KM-Pfq">
+                        <buttonCell key="cell" type="smallSquare" title="Start/Stop" bezelStyle="smallSquare" image="NSAddTemplate" imagePosition="overlaps" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="OFW-KM-Pfq">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="system"/>
                         </buttonCell>
@@ -461,6 +464,6 @@
         </window>
     </objects>
     <resources>
-        <image name="NSAddTemplate" catalog="system" width="18" height="17"/>
+        <image name="NSAddTemplate" width="18" height="17"/>
     </resources>
 </document>
