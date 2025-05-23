@@ -6,33 +6,22 @@
 	objectVersion = 77;
 	objects = {
 
-/* Begin PBXCopyFilesBuildPhase section */
-		A98E7EA02D836FBB0004DA00 /* Embed XPC Services */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "$(CONTENTS_FOLDER_PATH)/XPCServices";
-			dstSubfolderSpec = 16;
-			files = (
-			);
-			name = "Embed XPC Services";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXCopyFilesBuildPhase section */
+/* Begin PBXBuildFile section */
+		A966B4F42DE0842500C721A5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A966B4EE2DE0842400C721A5 /* AppDelegate.swift */; };
+		A966B4F52DE0842500C721A5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A966B4EF2DE0842400C721A5 /* Assets.xcassets */; };
+		A966B4F62DE0842500C721A5 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = A966B4F22DE0842400C721A5 /* MainMenu.xib */; };
+/* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		A91E849D2D82CF4100FC2E5F /* DockPhobia.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DockPhobia.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		A966B4D62DE0841000C721A5 /* DockPhobia.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DockPhobia.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		A966B4EE2DE0842400C721A5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		A966B4EF2DE0842400C721A5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		A966B4F02DE0842400C721A5 /* DockPhobia.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = DockPhobia.entitlements; sourceTree = "<group>"; };
+		A966B4F12DE0842400C721A5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
-/* Begin PBXFileSystemSynchronizedRootGroup section */
-		A91E849F2D82CF4100FC2E5F /* DockPhobia */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			path = DockPhobia;
-			sourceTree = "<group>";
-		};
-/* End PBXFileSystemSynchronizedRootGroup section */
-
 /* Begin PBXFrameworksBuildPhase section */
-		A91E849A2D82CF4100FC2E5F /* Frameworks */ = {
+		A966B4D32DE0841000C721A5 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -42,104 +31,125 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		A91E84942D82CF4100FC2E5F = {
+		A966B4CD2DE0841000C721A5 = {
 			isa = PBXGroup;
 			children = (
-				A91E849F2D82CF4100FC2E5F /* DockPhobia */,
-				A91E849E2D82CF4100FC2E5F /* Products */,
+				A966B4F32DE0842400C721A5 /* DockPhobia */,
+				A966B4D72DE0841000C721A5 /* Products */,
 			);
 			sourceTree = "<group>";
 		};
-		A91E849E2D82CF4100FC2E5F /* Products */ = {
+		A966B4D72DE0841000C721A5 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				A91E849D2D82CF4100FC2E5F /* DockPhobia.app */,
+				A966B4D62DE0841000C721A5 /* DockPhobia.app */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		A966B4F32DE0842400C721A5 /* DockPhobia */ = {
+			isa = PBXGroup;
+			children = (
+				A966B4EE2DE0842400C721A5 /* AppDelegate.swift */,
+				A966B4EF2DE0842400C721A5 /* Assets.xcassets */,
+				A966B4F02DE0842400C721A5 /* DockPhobia.entitlements */,
+				A966B4F22DE0842400C721A5 /* MainMenu.xib */,
+			);
+			path = DockPhobia;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		A91E849C2D82CF4100FC2E5F /* DockPhobia */ = {
+		A966B4D52DE0841000C721A5 /* DockPhobia */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = A91E84C22D82CF4300FC2E5F /* Build configuration list for PBXNativeTarget "DockPhobia" */;
+			buildConfigurationList = A966B4E32DE0841200C721A5 /* Build configuration list for PBXNativeTarget "DockPhobia" */;
 			buildPhases = (
-				A91E84992D82CF4100FC2E5F /* Sources */,
-				A91E849A2D82CF4100FC2E5F /* Frameworks */,
-				A91E849B2D82CF4100FC2E5F /* Resources */,
-				A98E7EA02D836FBB0004DA00 /* Embed XPC Services */,
+				A966B4D22DE0841000C721A5 /* Sources */,
+				A966B4D32DE0841000C721A5 /* Frameworks */,
+				A966B4D42DE0841000C721A5 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
-			fileSystemSynchronizedGroups = (
-				A91E849F2D82CF4100FC2E5F /* DockPhobia */,
-			);
 			name = DockPhobia;
 			packageProductDependencies = (
 			);
 			productName = DockPhobia;
-			productReference = A91E849D2D82CF4100FC2E5F /* DockPhobia.app */;
+			productReference = A966B4D62DE0841000C721A5 /* DockPhobia.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		A91E84952D82CF4100FC2E5F /* Project object */ = {
+		A966B4CE2DE0841000C721A5 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
-				LastSwiftUpdateCheck = 1620;
-				LastUpgradeCheck = 1620;
+				LastSwiftUpdateCheck = 1640;
+				LastUpgradeCheck = 1640;
 				TargetAttributes = {
-					A91E849C2D82CF4100FC2E5F = {
-						CreatedOnToolsVersion = 16.2;
+					A966B4D52DE0841000C721A5 = {
+						CreatedOnToolsVersion = 16.4;
 					};
 				};
 			};
-			buildConfigurationList = A91E84982D82CF4100FC2E5F /* Build configuration list for PBXProject "DockPhobia" */;
+			buildConfigurationList = A966B4D12DE0841000C721A5 /* Build configuration list for PBXProject "DockPhobia" */;
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
 				Base,
 			);
-			mainGroup = A91E84942D82CF4100FC2E5F;
+			mainGroup = A966B4CD2DE0841000C721A5;
 			minimizedProjectReferenceProxies = 1;
 			preferredProjectObjectVersion = 77;
-			productRefGroup = A91E849E2D82CF4100FC2E5F /* Products */;
+			productRefGroup = A966B4D72DE0841000C721A5 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				A91E849C2D82CF4100FC2E5F /* DockPhobia */,
+				A966B4D52DE0841000C721A5 /* DockPhobia */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		A91E849B2D82CF4100FC2E5F /* Resources */ = {
+		A966B4D42DE0841000C721A5 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A966B4F52DE0842500C721A5 /* Assets.xcassets in Resources */,
+				A966B4F62DE0842500C721A5 /* MainMenu.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		A91E84992D82CF4100FC2E5F /* Sources */ = {
+		A966B4D22DE0841000C721A5 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A966B4F42DE0842500C721A5 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXVariantGroup section */
+		A966B4F22DE0842400C721A5 /* MainMenu.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A966B4F12DE0842400C721A5 /* Base */,
+			);
+			name = MainMenu.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
 /* Begin XCBuildConfiguration section */
-		A91E84C02D82CF4300FC2E5F /* Debug */ = {
+		A966B4E12DE0841200C721A5 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -174,6 +184,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = 8JGND254B7;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = YES;
@@ -192,7 +203,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
-				MACOSX_DEPLOYMENT_TARGET = 15.2;
+				MACOSX_DEPLOYMENT_TARGET = 15.5;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -202,7 +213,7 @@
 			};
 			name = Debug;
 		};
-		A91E84C12D82CF4300FC2E5F /* Release */ = {
+		A966B4E22DE0841200C721A5 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -237,6 +248,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = 8JGND254B7;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = YES;
@@ -249,7 +261,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
-				MACOSX_DEPLOYMENT_TARGET = 15.2;
+				MACOSX_DEPLOYMENT_TARGET = 15.5;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = macosx;
@@ -257,69 +269,57 @@
 			};
 			name = Release;
 		};
-		A91E84C32D82CF4300FC2E5F /* Debug */ = {
+		A966B4E42DE0841200C721A5 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
 				CODE_SIGN_ENTITLEMENTS = DockPhobia/DockPhobia.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"DockPhobia/Preview Content\"";
-				DEVELOPMENT_TEAM = P6PV2R9443;
-				ENABLE_APP_SANDBOX = NO;
-				ENABLE_HARDENED_RUNTIME = NO;
-				ENABLE_PREVIEWS = YES;
-				ENABLE_USER_SCRIPT_SANDBOXING = NO;
+				DEVELOPMENT_TEAM = 8JGND254B7;
+				ENABLE_HARDENED_RUNTIME = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = DockPhobia/Info.plist;
-				INFOPLIST_KEY_LSUIElement = NO;
-				INFOPLIST_KEY_NSAppleEventsUsageDescription = "Needed to send AppleScript to move the Dock";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INFOPLIST_KEY_NSMainNibFile = MainMenu;
+				INFOPLIST_KEY_NSPrincipalClass = NSApplication;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 13;
-				MARKETING_VERSION = 2.0;
-				PRODUCT_BUNDLE_IDENTIFIER = dev.neon443.DockPhobia;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.neon443.DockPhobia;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				REGISTER_APP_GROUPS = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
 		};
-		A91E84C42D82CF4300FC2E5F /* Release */ = {
+		A966B4E52DE0841200C721A5 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
 				CODE_SIGN_ENTITLEMENTS = DockPhobia/DockPhobia.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"DockPhobia/Preview Content\"";
-				DEVELOPMENT_TEAM = P6PV2R9443;
-				ENABLE_APP_SANDBOX = NO;
-				ENABLE_HARDENED_RUNTIME = NO;
-				ENABLE_PREVIEWS = YES;
-				ENABLE_USER_SCRIPT_SANDBOXING = NO;
+				DEVELOPMENT_TEAM = 8JGND254B7;
+				ENABLE_HARDENED_RUNTIME = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = DockPhobia/Info.plist;
-				INFOPLIST_KEY_LSUIElement = NO;
-				INFOPLIST_KEY_NSAppleEventsUsageDescription = "Needed to send AppleScript to move the Dock";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INFOPLIST_KEY_NSMainNibFile = MainMenu;
+				INFOPLIST_KEY_NSPrincipalClass = NSApplication;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 13;
-				MARKETING_VERSION = 2.0;
-				PRODUCT_BUNDLE_IDENTIFIER = dev.neon443.DockPhobia;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.neon443.DockPhobia;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				REGISTER_APP_GROUPS = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 			};
@@ -328,25 +328,25 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		A91E84982D82CF4100FC2E5F /* Build configuration list for PBXProject "DockPhobia" */ = {
+		A966B4D12DE0841000C721A5 /* Build configuration list for PBXProject "DockPhobia" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				A91E84C02D82CF4300FC2E5F /* Debug */,
-				A91E84C12D82CF4300FC2E5F /* Release */,
+				A966B4E12DE0841200C721A5 /* Debug */,
+				A966B4E22DE0841200C721A5 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		A91E84C22D82CF4300FC2E5F /* Build configuration list for PBXNativeTarget "DockPhobia" */ = {
+		A966B4E32DE0841200C721A5 /* Build configuration list for PBXNativeTarget "DockPhobia" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				A91E84C32D82CF4300FC2E5F /* Debug */,
-				A91E84C42D82CF4300FC2E5F /* Release */,
+				A966B4E42DE0841200C721A5 /* Debug */,
+				A966B4E52DE0841200C721A5 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = A91E84952D82CF4100FC2E5F /* Project object */;
+	rootObject = A966B4CE2DE0841000C721A5 /* Project object */;
 }
