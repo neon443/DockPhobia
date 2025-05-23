@@ -32,11 +32,15 @@ class MouseTracker {
 			fatalError("no screen wtf???")
 		}
 		addMonitor()
+		applescript("display dialog \"dt\"")
 	}
 	
 	func checkMouse(_ event: NSEvent) {
 		var location = event.locationInWindow
+		location.y = screen.height - location.y
+		#if DEBUG
 		print(location)
+		#endif
 	}
 	
 	func addMonitor() {
@@ -45,6 +49,17 @@ class MouseTracker {
 	
 	func removeMonitor() {
 		NSEvent.removeMonitor(monitor as Any)
+	}
+	
+	func applescript(_ script: String) {
+		var error: NSDictionary?
+		if let scriptObject = NSAppleScript(source: script) {
+			let output: NSAppleEventDescriptor = scriptObject.executeAndReturnError(&error)
+			print(output)
+			if (error != nil) {
+				print(error as Any)
+			}
+		}
 	}
 }
 
