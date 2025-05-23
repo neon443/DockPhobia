@@ -149,6 +149,7 @@
 			);
 			name = MainMenu.xib;
 			sourceTree = "<group>";
+			usesTabs = 1;
 		};
 /* End PBXVariantGroup section */
 
