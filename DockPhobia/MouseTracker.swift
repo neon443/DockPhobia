@@ -15,6 +15,12 @@ struct Screen {
 	var height: CGFloat
 }
 
+enum DockSide {
+	case left
+	case right
+	case bottom
+}
+
 class MouseTracker {
 	var screen: Screen
 	
@@ -32,6 +38,7 @@ class MouseTracker {
 			fatalError("no screen wtf???")
 		}
 		addMonitor()
+		moveDock(.left)
 	}
 	
 	func checkMouse(_ event: NSEvent) {
@@ -40,6 +47,9 @@ class MouseTracker {
 		#if DEBUG
 		print(location)
 		#endif
+		if location.y > 1000 {
+			
+		}
 	}
 	
 	func addMonitor() {
@@ -48,6 +58,17 @@ class MouseTracker {
 	
 	func removeMonitor() {
 		NSEvent.removeMonitor(monitor as Any)
+	}
+	
+	func moveDock(_ toSide: DockSide) {
+		let script = """
+  tell application "System Events"
+   tell dock preferences
+    set screen edge to \(toSide)
+   end tell
+  end tell
+  """
+		applescript(script)
 	}
 	
 	func applescript(_ script: String) {
