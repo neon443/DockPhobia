@@ -14,14 +14,17 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 	@IBOutlet var window: NSWindow!
 	
 	@IBAction func startStopButton(_ sender: Any) {
-		print("button pressed")
+		if mouseTracker.monitor != nil {
+			mouseTracker.addMonitor()
+		} else {
+			mouseTracker.removeMonitor()
+		}
 	}
 	var mouseTracker = MouseTracker()
 	
 	
 	func applicationDidFinishLaunching(_ aNotification: Notification) {
 		// Insert code here to initialize your application
-		mouseTracker.addMonitor()
 	}
 	
 	func applicationWillTerminate(_ aNotification: Notification) {

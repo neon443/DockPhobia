@@ -435,6 +435,9 @@
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="system"/>
                         </buttonCell>
+                        <connections>
+                            <action selector="startStopButton:" target="Voe-Tx-rLC" id="hVa-jw-V1p"/>
+                        </connections>
                     </button>
                     <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vxC-at-nRH">
                         <rect key="frame" x="84" y="216" width="75" height="32"/>
@@ -453,6 +456,9 @@
                         <buttonCell key="cell" type="smallSquare" title="Start/Stop" bezelStyle="smallSquare" image="NSAddTemplate" imagePosition="overlaps" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="OFW-KM-Pfq">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="system"/>
+                            <connections>
+                                <action selector="startStopButton:" target="Voe-Tx-rLC" id="qYV-K4-lqf"/>
+                            </connections>
                         </buttonCell>
                     </button>
                 </subviews>
