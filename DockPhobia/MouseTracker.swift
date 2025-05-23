@@ -8,9 +8,58 @@
 import Foundation
 import AppKit
 import Cocoa
+import CoreGraphics
 
-func printMouse() {
-	let mouseLoc: NSPoint
-	mouseLoc = NSEvent.mouseLocation
-	print(mouseLoc)
+struct Screen {
+	var width: CGFloat
+	var height: CGFloat
 }
+
+class MouseTracker {
+	var screen: Screen
+	
+	var monitor: NSEvent?
+	
+	init() {
+		if let screen = NSScreen.main {
+			let rect = screen.frame
+			self.screen = Screen(
+				width: rect.width,
+				height: rect.height
+			)
+			print(self.screen)
+		} else {
+			fatalError("no screen wtf???")
+		}
+		addMonitor()
+	}
+	
+	func checkMouse(_ event: NSEvent) {
+		var location = event.locationInWindow
+		print(location)
+	}
+	
+	func addMonitor() {
+		self.monitor = NSEvent.addGlobalMonitorForEvents(matching: .mouseMoved, handler: checkMouse) as? NSEvent
+	}
+	
+	func removeMonitor() {
+		NSEvent.removeMonitor(monitor as Any)
+	}
+}
+
+
+/*- (void) startEventTap {
+	//eventTap is an ivar on this class of type CFMachPortRef
+	eventTap = CGEventTapCreate(kCGHIDEventTap, kCGHeadInsertEventTap, kCGEventTapOptionListenOnly, kCGEventMaskForAllEvents, myCGEventCallback, NULL);
+	CGEventTapEnable(eventTap, true);
+}
+
+CGEventRef myCGEventCallback(CGEventTapProxy proxy, CGEventType type, CGEventRef event, void *refcon) {
+	if (type == kCGEventMouseMoved) {
+		NSLog(@"%@", NSStringFromPoint([NSEvent mouseLocation]));
+	}
+	
+	return event;
+}
+*/

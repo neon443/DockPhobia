@@ -6,19 +6,19 @@
 //
 
 import Cocoa
+import AppKit
 
 @main
 class AppDelegate: NSObject, NSApplicationDelegate {
 	
 	@IBOutlet var window: NSWindow!
 	
+	var mouseTracker = MouseTracker()
+	
 	
 	func applicationDidFinishLaunching(_ aNotification: Notification) {
 		// Insert code here to initialize your application
-		while true {
-			printMouse()
-			sleep(1)
-		}
+		mouseTracker.addMonitor()
 	}
 	
 	func applicationWillTerminate(_ aNotification: Notification) {
@@ -29,4 +29,3 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 		return true
 	}
 }
-
