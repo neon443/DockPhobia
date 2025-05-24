@@ -7,18 +7,18 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A94BEC0F2DE23E8500D4811D /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = A94BEC0E2DE23E8500D4811D /* MainMenu.xib */; };
 		A966B4F42DE0842500C721A5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A966B4EE2DE0842400C721A5 /* AppDelegate.swift */; };
 		A966B4F52DE0842500C721A5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A966B4EF2DE0842400C721A5 /* Assets.xcassets */; };
-		A966B4F62DE0842500C721A5 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = A966B4F22DE0842400C721A5 /* MainMenu.xib */; };
 		A966B4F82DE0852900C721A5 /* MouseTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = A966B4F72DE0852900C721A5 /* MouseTracker.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		A94BEC0E2DE23E8500D4811D /* MainMenu.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainMenu.xib; sourceTree = "<group>"; };
 		A966B4D62DE0841000C721A5 /* DockPhobia.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DockPhobia.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A966B4EE2DE0842400C721A5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A966B4EF2DE0842400C721A5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A966B4F02DE0842400C721A5 /* DockPhobia.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = DockPhobia.entitlements; sourceTree = "<group>"; };
-		A966B4F12DE0842400C721A5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		A966B4F72DE0852900C721A5 /* MouseTracker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MouseTracker.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -33,6 +33,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A94BEC0A2DE21F8100D4811D /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				A966B4EF2DE0842400C721A5 /* Assets.xcassets */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		A94BEC102DE23ECE00D4811D /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				A94BEC0E2DE23E8500D4811D /* MainMenu.xib */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		A966B4CD2DE0841000C721A5 = {
 			isa = PBXGroup;
 			children = (
@@ -54,9 +70,9 @@
 			children = (
 				A966B4EE2DE0842400C721A5 /* AppDelegate.swift */,
 				A966B4F72DE0852900C721A5 /* MouseTracker.swift */,
-				A966B4EF2DE0842400C721A5 /* Assets.xcassets */,
+				A94BEC102DE23ECE00D4811D /* Views */,
+				A94BEC0A2DE21F8100D4811D /* Resources */,
 				A966B4F02DE0842400C721A5 /* DockPhobia.entitlements */,
-				A966B4F22DE0842400C721A5 /* MainMenu.xib */,
 			);
 			path = DockPhobia;
 			sourceTree = "<group>";
@@ -122,8 +138,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A94BEC0F2DE23E8500D4811D /* MainMenu.xib in Resources */,
 				A966B4F52DE0842500C721A5 /* Assets.xcassets in Resources */,
-				A966B4F62DE0842500C721A5 /* MainMenu.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -140,18 +156,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXVariantGroup section */
-		A966B4F22DE0842400C721A5 /* MainMenu.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				A966B4F12DE0842400C721A5 /* Base */,
-			);
-			name = MainMenu.xib;
-			sourceTree = "<group>";
-			usesTabs = 1;
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		A966B4E12DE0841200C721A5 /* Debug */ = {
@@ -287,10 +291,12 @@
 				ENABLE_HARDENED_RUNTIME = NO;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_LSUIElement = YES;
 				INFOPLIST_KEY_NSAppleEventsUsageDescription = _;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
-				INFOPLIST_KEY_NSMainNibFile = MainMenu;
+				INFOPLIST_KEY_NSMainNibFile = "";
 				INFOPLIST_KEY_NSPrincipalClass = NSApplication;
+				INFOPLIST_KEY_UIUserInterfaceStyle = Automatic;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
@@ -318,10 +324,12 @@
 				ENABLE_HARDENED_RUNTIME = NO;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_LSUIElement = YES;
 				INFOPLIST_KEY_NSAppleEventsUsageDescription = _;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
-				INFOPLIST_KEY_NSMainNibFile = MainMenu;
+				INFOPLIST_KEY_NSMainNibFile = "";
 				INFOPLIST_KEY_NSPrincipalClass = NSApplication;
+				INFOPLIST_KEY_UIUserInterfaceStyle = Automatic;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",

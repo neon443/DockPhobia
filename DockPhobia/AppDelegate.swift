@@ -11,20 +11,17 @@ import AppKit
 @main
 class AppDelegate: NSObject, NSApplicationDelegate {
 	
-	@IBOutlet var window: NSWindow!
+	public var statusItem: NSStatusItem!
 	
-	@IBAction func startStopButton(_ sender: Any) {
-		if mouseTracker.monitor != nil {
-			mouseTracker.addMonitor()
-		} else {
-			mouseTracker.removeMonitor()
-		}
-	}
 	var mouseTracker = MouseTracker()
 	
 	
 	func applicationDidFinishLaunching(_ aNotification: Notification) {
-		// Insert code here to initialize your application
+		statusItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.variableLength)
+		if let button = statusItem.button {
+			button.image = NSImage(named: "cursor")
+		}
+		setupMenus()
 	}
 	
 	func applicationWillTerminate(_ aNotification: Notification) {
@@ -33,5 +30,30 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 	
 	func applicationSupportsSecureRestorableState(_ app: NSApplication) -> Bool {
 		return true
+	}
+	
+	func setupMenus() {
+		let menu = NSMenu()
+		let one = NSMenuItem(title: "hi", action: #selector(didTapStart), keyEquivalent: "s s")
+		menu.addItem(one)
+		
+		menu.addItem(NSMenuItem.separator())
+		statusItem.menu = menu
+	}
+	
+	func changeMenuIcon(running: Bool) {
+		if let button = statusItem.button {
+			button.image = NSImage(named: "cursor\(running ? ".motion" : "")")
+		}
+	}
+	
+	@objc func didTapStart() {
+		if mouseTracker.running {
+			mouseTracker.removeMonitor()
+			changeMenuIcon(running: false)
+		} else {
+			mouseTracker.addMonitor()
+			changeMenuIcon(running: true)
+		}
 	}
 }

@@ -24,7 +24,9 @@ enum DockSide {
 class MouseTracker {
 	var screen: Screen
 	
-	var monitor: NSEvent?
+	var monitor: Any?
+	
+	var running: Bool = false
 	
 	init() {
 		if let screen = NSScreen.main {
@@ -37,8 +39,8 @@ class MouseTracker {
 		} else {
 			fatalError("no screen wtf???")
 		}
-		addMonitor()
 		moveDock(.left)
+		moveDock(.bottom)
 	}
 	
 	func checkMouse(_ event: NSEvent) {
@@ -53,11 +55,18 @@ class MouseTracker {
 	}
 	
 	func addMonitor() {
-		self.monitor = NSEvent.addGlobalMonitorForEvents(matching: .mouseMoved, handler: checkMouse) as? NSEvent
+		self.monitor = NSEvent.addGlobalMonitorForEvents(matching: .mouseMoved, handler: checkMouse)
+		self.running = true
+		print("started tracking")
 	}
 	
 	func removeMonitor() {
-		NSEvent.removeMonitor(monitor as Any)
+		if let monitor = monitor {
+			NSEvent.removeMonitor(monitor)
+			self.running = false
+		}
+		
+		print("stop tracking")
 	}
 	
 	func moveDock(_ toSide: DockSide) {
