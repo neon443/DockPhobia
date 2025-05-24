@@ -7,8 +7,6 @@
 
 import Foundation
 import AppKit
-import Cocoa
-import CoreGraphics
 
 struct Screen {
 	var width: CGFloat

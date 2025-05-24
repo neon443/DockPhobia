@@ -5,7 +5,6 @@
 //  Created by neon443 on 23/05/2025.
 //
 
-import Cocoa
 import AppKit
 
 @main
