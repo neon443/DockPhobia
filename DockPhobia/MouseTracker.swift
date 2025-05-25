@@ -17,6 +17,7 @@ enum DockSide {
 	case left
 	case right
 	case bottom
+	
 }
 
 class MouseTracker {
