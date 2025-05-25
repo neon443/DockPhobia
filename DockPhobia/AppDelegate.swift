@@ -18,7 +18,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 	func applicationDidFinishLaunching(_ aNotification: Notification) {
 		statusItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.variableLength)
 		if let button = statusItem.button {
-			button.image = NSImage(named: "cursor")
+			button.image = NSImage(named: "cursor.slash")
 		}
 		setupMenus()
 	}
@@ -41,8 +41,12 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 	}
 	
 	func changeMenuIcon(running: Bool) {
-		if let button = statusItem.button {
-			button.image = NSImage(named: "cursor\(running ? ".motion" : "")")
+		guard let button = statusItem.button else { return }
+		switch running {
+		case true:
+			button.image = NSImage(named: "cursor.motion")
+		case false:
+			button.image = NSImage(named: "cursor.slash")
 		}
 	}
 	

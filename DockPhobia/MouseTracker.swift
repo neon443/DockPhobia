@@ -37,8 +37,6 @@ class MouseTracker {
 		} else {
 			fatalError("no screen wtf???")
 		}
-		moveDock(.left)
-		moveDock(.bottom)
 	}
 	
 	func checkMouse(_ event: NSEvent) {
@@ -48,7 +46,31 @@ class MouseTracker {
 		print(location)
 		#endif
 		if location.y > 1000 {
-			
+			if location.x < screen.width/2 {
+				moveDock(.right)
+				return
+			} else {
+				moveDock(.left)
+				return
+			}
+		}
+		if location.x < 100 {
+			if location.y < screen.height/2 {
+				moveDock(.bottom)
+				return
+			} else {
+				moveDock(.right)
+				return
+			}
+		}
+		if location.x > 1600 {
+			if location.y < screen.height/2 {
+				moveDock(.bottom)
+				return
+			} else {
+				moveDock(.left)
+				return
+			}
 		}
 	}
 	
