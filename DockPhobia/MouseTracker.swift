@@ -15,8 +15,8 @@ struct Screen {
 
 enum DockSide: Int, RawRepresentable {
 	case left
-	case right
 	case bottom
+	case right
 	
 	public typealias RawValue = String
 	
@@ -31,6 +31,12 @@ enum DockSide: Int, RawRepresentable {
 		}
 	}
 	
+	/// Random Dock Side
+	/// - will return a random Dock Side when calling DockSide()
+	public init() {
+		self = DockSide(rawValue: Int.random(in: 1...3))!
+	}
+	
 	public init?(rawValue: String) {
 		switch rawValue {
 		case "left":
@@ -39,6 +45,19 @@ enum DockSide: Int, RawRepresentable {
 			self = .right
 		case "bottom":
 			self = .bottom
+		default:
+			return nil
+		}
+	}
+	
+	public init?(rawValue: Int) {
+		switch rawValue {
+		case 1:
+			self = .left
+		case 2:
+			self = .bottom
+		case 3:
+			self = .right
 		default:
 			return nil
 		}
@@ -52,7 +71,10 @@ class MouseTracker {
 	
 	var running: Bool = false
 	
+	var currentDockSide: DockSide
+	
 	init() {
+		print(DockSide())
 		if let screen = NSScreen.main {
 			let rect = screen.frame
 			self.screen = Screen(
@@ -63,6 +85,9 @@ class MouseTracker {
 		} else {
 			fatalError("no screen wtf???")
 		}
+		self.currentDockSide = .bottom
+		moveDock(.bottom)
+		start()
 	}
 	
 	func checkMouse(_ event: NSEvent) {
@@ -71,42 +96,48 @@ class MouseTracker {
 		#if DEBUG
 		print(location)
 		#endif
-		if location.y > 1000 {
-			if location.x < screen.width/2 {
-				moveDock(.right)
-				return
-			} else {
-				moveDock(.left)
-				return
+		
+		switch currentDockSide {
+		case .left:
+			if location.x < 100 {
+				if location.y < screen.height/2 {
+					moveDock(.bottom)
+					return
+				} else {
+					moveDock(.right)
+					return
+				}
 			}
-		}
-		if location.x < 100 {
-			if location.y < screen.height/2 {
-				moveDock(.bottom)
-				return
-			} else {
-				moveDock(.right)
-				return
+		case .bottom:
+			if location.y > 1000 {
+				if location.x < screen.width/2 {
+					moveDock(.right)
+					return
+				} else {
+					moveDock(.left)
+					return
+				}
 			}
-		}
-		if location.x > 1600 {
-			if location.y < screen.height/2 {
-				moveDock(.bottom)
-				return
-			} else {
-				moveDock(.left)
-				return
+		case .right:
+			if location.x > 1600 {
+				if location.y < screen.height/2 {
+					moveDock(.bottom)
+					return
+				} else {
+					moveDock(.left)
+					return
+				}
 			}
 		}
 	}
 	
-	func addMonitor() {
+	func start() {
 		self.monitor = NSEvent.addGlobalMonitorForEvents(matching: .mouseMoved, handler: checkMouse)
 		self.running = true
 		print("started tracking")
 	}
 	
-	func removeMonitor() {
+	func stop() {
 		if let monitor = monitor {
 			NSEvent.removeMonitor(monitor)
 			self.running = false
@@ -124,9 +155,11 @@ class MouseTracker {
   end tell
   """
 		applescript(script)
+		currentDockSide = toSide
 	}
 	
-	func applescript(_ script: String) {
+	@discardableResult
+	func applescript(_ script: String) -> String? {
 		var error: NSDictionary?
 		if let scriptObject = NSAppleScript(source: script) {
 			scriptObject.executeAndReturnError(&error)
@@ -134,6 +167,7 @@ class MouseTracker {
 				print(error as Any)
 			}
 		}
+		return nil
 	}
 }
 

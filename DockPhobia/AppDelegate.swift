@@ -86,10 +86,10 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 	
 	@objc func didTapStart() {
 		if mouseTracker.running {
-			mouseTracker.removeMonitor()
+			mouseTracker.stop()
 			changeMenuIcon(running: false)
 		} else {
-			mouseTracker.addMonitor()
+			mouseTracker.start()
 			changeMenuIcon(running: true)
 		}
 		setupMenus()
