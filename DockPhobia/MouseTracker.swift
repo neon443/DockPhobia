@@ -87,46 +87,42 @@ class MouseTracker {
 		}
 		self.currentDockSide = .bottom
 		moveDock(.bottom)
-		start()
 	}
 	
 	func checkMouse(_ event: NSEvent) {
 		var location = event.locationInWindow
 		location.y = screen.height - location.y
-		#if DEBUG
+#if DEBUG
 		print(location)
-		#endif
+#endif
 		
 		switch currentDockSide {
 		case .left:
-			if location.x < 100 {
-				if location.y < screen.height/2 {
-					moveDock(.bottom)
-					return
-				} else {
-					moveDock(.right)
-					return
-				}
+			guard location.x < 100 else { return }
+			if location.y < screen.height/2 {
+				moveDock(.bottom)
+				return
+			} else {
+				moveDock(.right)
+				return
 			}
 		case .bottom:
-			if location.y > 1000 {
-				if location.x < screen.width/2 {
-					moveDock(.right)
-					return
-				} else {
-					moveDock(.left)
-					return
-				}
+			guard location.y > 1000 else { return }
+			if location.x < screen.width/2 {
+				moveDock(.right)
+				return
+			} else {
+				moveDock(.left)
+				return
 			}
 		case .right:
-			if location.x > 1600 {
-				if location.y < screen.height/2 {
-					moveDock(.bottom)
-					return
-				} else {
-					moveDock(.left)
-					return
-				}
+			guard location.x > 1600 else { return }
+			if location.y < screen.height/2 {
+				moveDock(.bottom)
+				return
+			} else {
+				moveDock(.left)
+				return
 			}
 		}
 	}
