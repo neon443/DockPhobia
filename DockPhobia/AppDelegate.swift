@@ -69,7 +69,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 		
 		menu.addItem(NSMenuItem.separator())
 		
-		let quit = NSMenuItem(title: "Quit", action: #selector(didTapStart), keyEquivalent: "q")
+		let quit = NSMenuItem(title: "Quit", action: #selector(quit), keyEquivalent: "q")
 		menu.addItem(quit)
 		statusItem.menu = menu
 	}
@@ -93,6 +93,10 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 			changeMenuIcon(running: true)
 		}
 		setupMenus()
+	}
+	
+	@objc func quit() {
+		NSApplication.shared.terminate(self)
 	}
 	
 	@objc func moveDockObjcLeft() { mouseTracker.moveDock(.left) }
