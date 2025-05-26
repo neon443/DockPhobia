@@ -5,8 +5,8 @@
 //  Created by neon443 on 26/05/2025.
 //
 
-VERSION = 1.0
-BUILD_ID = 4
+VERSION = 1.0.1
+BUILD_ID = 1
 TEAM_ID = 8JGND254B7
 BUNDLE_ID = com.neon443.DockPhobia
 
