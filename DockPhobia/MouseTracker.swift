@@ -73,6 +73,8 @@ class MouseTracker {
 	
 	var currentDockSide: DockSide
 	
+	var dockHeight: CGFloat = 0
+	
 	init() {
 		print(DockSide())
 		if let screen = NSScreen.main {
@@ -87,7 +89,7 @@ class MouseTracker {
 		}
 		self.currentDockSide = .left
 		moveDock(.bottom)
-		currentDockSide = .bottom
+		getDockSize()
 	}
 	
 	func checkMouse(_ event: NSEvent) {
@@ -96,10 +98,9 @@ class MouseTracker {
 #if DEBUG
 		print(location)
 #endif
-		
 		switch currentDockSide {
 		case .left:
-			guard location.x < 100 else { return }
+			guard location.x < dockHeight else { return }
 			if location.y < screen.height/2 {
 				moveDock(.bottom)
 				return
@@ -108,7 +109,7 @@ class MouseTracker {
 				return
 			}
 		case .bottom:
-			guard location.y > 1000 else { return }
+			guard location.y > screen.height - dockHeight else { return }
 			if location.x < screen.width/2 {
 				moveDock(.right)
 				return
@@ -117,7 +118,7 @@ class MouseTracker {
 				return
 			}
 		case .right:
-			guard location.x > 1600 else { return }
+			guard location.x > screen.width - dockHeight else { return }
 			if location.y < screen.height/2 {
 				moveDock(.bottom)
 				return
@@ -168,6 +169,12 @@ class MouseTracker {
 		currentDockSide = toSide
 	}
 	
+	func getDockSize() {
+		guard let screen = NSScreen.main?.frame else { fatalError() }
+		guard let screenVisible = NSScreen.main?.visibleFrame else { fatalError() }
+		self.dockHeight = screen.height - screenVisible.height
+	}
+	
 	@discardableResult
 	func applescript(_ script: String) -> String? {
 		var error: NSDictionary?
@@ -180,19 +187,3 @@ class MouseTracker {
 		return nil
 	}
 }
-
-
-/*- (void) startEventTap {
-	//eventTap is an ivar on this class of type CFMachPortRef
-	eventTap = CGEventTapCreate(kCGHIDEventTap, kCGHeadInsertEventTap, kCGEventTapOptionListenOnly, kCGEventMaskForAllEvents, myCGEventCallback, NULL);
-	CGEventTapEnable(eventTap, true);
-}
-
-CGEventRef myCGEventCallback(CGEventTapProxy proxy, CGEventType type, CGEventRef event, void *refcon) {
-	if (type == kCGEventMouseMoved) {
-		NSLog(@"%@", NSStringFromPoint([NSEvent mouseLocation]));
-	}
-	
-	return event;
-}
-*/
