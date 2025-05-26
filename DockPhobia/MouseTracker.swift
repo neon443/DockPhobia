@@ -85,8 +85,9 @@ class MouseTracker {
 		} else {
 			fatalError("no screen wtf???")
 		}
-		self.currentDockSide = .bottom
+		self.currentDockSide = .left
 		moveDock(.bottom)
+		currentDockSide = .bottom
 	}
 	
 	func checkMouse(_ event: NSEvent) {
@@ -143,14 +144,27 @@ class MouseTracker {
 	}
 	
 	func moveDock(_ toSide: DockSide) {
-		let script = """
+		guard currentDockSide != toSide else { return }
+//		let scriptHide = """
+//  tell application "System Events" 
+//    tell dock preferences
+//      set autohide to true
+//    end tell
+//  end tell
+//  """
+//		
+//		let scriptShow = scriptHide.replacingOccurrences(of: "true", with: "false")
+		
+		let scriptMove = """
   tell application "System Events"
    tell dock preferences
     set screen edge to \(toSide)
    end tell
   end tell
   """
-		applescript(script)
+//		applescript(scriptHide)
+		applescript(scriptMove)
+//		applescript(scriptShow)
 		currentDockSide = toSide
 	}
 	
