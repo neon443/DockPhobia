@@ -33,10 +33,44 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 	
 	func setupMenus() {
 		let menu = NSMenu()
-		let one = NSMenuItem(title: "hi", action: #selector(didTapStart), keyEquivalent: "s s")
-		menu.addItem(one)
+		let start = NSMenuItem(title: describeStartButton(), action: #selector(didTapStart), keyEquivalent: "")
+		menu.addItem(start)
+		
+		let screen = NSMenuItem(
+			title: "\(mouseTracker.screen.width)x\(mouseTracker.screen.height)",
+			action: nil,
+			keyEquivalent: ""
+		)
+		menu.addItem(screen)
 		
 		menu.addItem(NSMenuItem.separator())
+		
+		menu.addItem(
+			NSMenuItem(
+				title: "Move Dock to left",
+				action: #selector(moveDockObjcLeft),
+				keyEquivalent: ""
+			)
+		)
+		menu.addItem(
+			NSMenuItem(
+				title: "Move Dock to bottom",
+				action: #selector(moveDockObjcBottom),
+				keyEquivalent: ""
+			)
+		)
+		menu.addItem(
+			NSMenuItem(
+				title: "Move Dock to right",
+				action: #selector(moveDockObjcRight),
+				keyEquivalent: ""
+			)
+		)
+		
+		menu.addItem(NSMenuItem.separator())
+		
+		let quit = NSMenuItem(title: "Quit", action: #selector(didTapStart), keyEquivalent: "q")
+		menu.addItem(quit)
 		statusItem.menu = menu
 	}
 	
@@ -57,6 +91,19 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 		} else {
 			mouseTracker.addMonitor()
 			changeMenuIcon(running: true)
+		}
+		setupMenus()
+	}
+	
+	@objc func moveDockObjcLeft() { mouseTracker.moveDock(.left) }
+	@objc func moveDockObjcRight() { mouseTracker.moveDock(.right) }
+	@objc func moveDockObjcBottom() { mouseTracker.moveDock(.bottom) }
+	
+	func describeStartButton() -> String {
+		if mouseTracker.running {
+			return "Stop tracking"
+		} else {
+			return "Start tracking"
 		}
 	}
 }

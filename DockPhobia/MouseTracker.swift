@@ -13,11 +13,36 @@ struct Screen {
 	var height: CGFloat
 }
 
-enum DockSide {
+enum DockSide: Int, RawRepresentable {
 	case left
 	case right
 	case bottom
 	
+	public typealias RawValue = String
+	
+	public var rawValue: RawValue {
+		switch self {
+		case .left:
+			return "left"
+		case .right:
+			return "right"
+		case .bottom:
+			return "bottom"
+		}
+	}
+	
+	public init?(rawValue: String) {
+		switch rawValue {
+		case "left":
+			self = .left
+		case "right":
+			self = .right
+		case "bottom":
+			self = .bottom
+		default:
+			return nil
+		}
+	}
 }
 
 class MouseTracker {
