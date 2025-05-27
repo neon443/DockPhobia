@@ -7,6 +7,8 @@
 
 import Foundation
 import AppKit
+import Cocoa
+import ApplicationServices
 
 struct Screen {
 	var width: CGFloat
@@ -93,12 +95,23 @@ class MouseTracker {
 	}
 	
 	func checkMouse(_ event: NSEvent) {
-		var location = event.locationInWindow
+		var location = NSEvent.mouseLocation
 		location.y = screen.height - location.y
-#if DEBUG
-		print(location)
-#endif
-		switch currentDockSide {
+		
+		guard isFrontmostFullscreen() else {
+			if location.x < 1 ||
+				location.x < screen.width-1 ||
+				location.y > screen.height-1 {
+				handleDockValue(dockIsAt: currentDockSide, location: location)
+			}
+			return
+		}
+		
+		handleDockValue(dockIsAt: currentDockSide, location: location)
+	}
+	
+	func handleDockValue(dockIsAt: DockSide, location: NSPoint) {
+		switch dockIsAt {
 		case .left:
 			guard location.x < dockHeight else { return }
 			if location.y < screen.height/2 {
@@ -186,4 +199,28 @@ class MouseTracker {
 		}
 		return nil
 	}
+}
+
+func isFrontmostFullscreen() -> Bool {
+	guard let frontmostApp = NSWorkspace.shared.frontmostApplication,
+		  let appPID = frontmostApp.processIdentifier as pid_t? else {
+		return false
+	}
+	
+	let appElement = AXUIElementCreateApplication(appPID)
+	var frontWindo: AnyObject?
+	let result = AXUIElementCopyAttributeValue(appElement, kAXFocusedWindowAttribute as CFString, &frontWindo)
+	
+	guard result == .success, let windowElement = frontWindo else {
+		return false
+	}
+	
+	var fullscreenValue: AnyObject?
+	let fullscreenAttr = AXUIElementCopyAttributeValue(windowElement as! AXUIElement, "AXFullScreen" as CFString, &fullscreenValue)
+	
+	if fullscreenAttr == .success,
+	   let isFullscreen = fullscreenValue as? Bool {
+		return isFullscreen
+	}
+	return false
 }
