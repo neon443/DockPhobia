@@ -13,7 +13,7 @@
         </a>
     </p>
     <p>
-        <a href="https://github.com/neon443/DockPhobia/releases">
+        <a href="https://github.com/neon443/DockPhobia/releases/latest/download/DockPhobia.dmg">
             download
         </a>
     </p>
