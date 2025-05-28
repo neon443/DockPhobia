@@ -55,6 +55,15 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 			keyEquivalent: ""
 		)
 		menu.addItem(dockMoves)
+		menu.addItem(NSMenuItem.separator())
+		
+		let moveMouseButton = NSMenuItem(
+			title: "Move cursor instead",
+			action: #selector(moveMouseToggle),
+			keyEquivalent: ""
+		)
+		moveMouseButton.state = NSControl.StateValue(rawValue: settings.settings.moveMouseInstead ? 1 : 0)
+		menu.addItem(moveMouseButton)
 		
 		menu.addItem(NSMenuItem.separator())
 		
@@ -67,28 +76,18 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 		menu.addItem(checkfullscreenButton)
 		menu.addItem(NSMenuItem.separator())
 		
-		menu.addItem(
-			NSMenuItem(
+		menu.addItem(NSMenuItem(
 				title: "Move Dock to left",
 				action: #selector(moveDockObjcLeft),
-				keyEquivalent: ""
-			)
-		)
-		menu.addItem(
-			NSMenuItem(
+				keyEquivalent: ""))
+		menu.addItem(NSMenuItem(
 				title: "Move Dock to bottom",
 				action: #selector(moveDockObjcBottom),
-				keyEquivalent: ""
-			)
-		)
-		menu.addItem(
-			NSMenuItem(
-				title: "Move Dock to right",
-				action: #selector(moveDockObjcRight),
-				keyEquivalent: ""
-			)
-		)
-		
+				keyEquivalent: ""))
+		menu.addItem(NSMenuItem(
+			title: "Move Dock to right",
+			action: #selector(moveDockObjcRight),
+			keyEquivalent: ""))
 		menu.addItem(NSMenuItem.separator())
 		
 		let quit = NSMenuItem(title: "Quit", action: #selector(quit), keyEquivalent: "q")
@@ -122,6 +121,10 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 	@objc func moveDockObjcBottom() { mouseTracker.moveDock(.bottom) }
 	@objc func checkFullscreenToggle() {
 		settings.settings.checkFullscreen.toggle()
+		refreshMenus()
+	}
+	@objc func moveMouseToggle() {
+		settings.settings.moveMouseInstead.toggle()
 		refreshMenus()
 	}
 	func describeStartButton() -> String {

@@ -100,6 +100,11 @@ class MouseTracker {
 	}
 	
 	func checkMouse(_ event: NSEvent) {
+		guard !settings.settings.moveMouseInstead else {
+			print("do the thing ehre")
+			return
+		}
+		
 		var location = NSEvent.mouseLocation
 		location.y = screen.height - location.y
 		

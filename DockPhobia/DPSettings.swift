@@ -11,6 +11,7 @@ import AppKit
 struct DPSettings: Codable {
 	var dockMoves: Int = 0
 	var checkFullscreen: Bool = false
+	var moveMouseInstead: Bool = false
 }
 
 class DPSettingsModel {
