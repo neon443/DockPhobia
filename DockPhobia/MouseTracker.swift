@@ -77,7 +77,9 @@ class MouseTracker {
 	
 	var dockHeight: CGFloat = 0
 	
-	init() {
+	var settings: DPSettingsModel
+	
+	init(settings: DPSettingsModel) {
 		print(DockSide())
 		if let screen = NSScreen.main {
 			let rect = screen.frame
@@ -89,6 +91,9 @@ class MouseTracker {
 		} else {
 			fatalError("no screen wtf???")
 		}
+		
+		self.settings = settings
+		
 		self.currentDockSide = .left
 		moveDock(.bottom)
 		getDockSize()
@@ -98,6 +103,11 @@ class MouseTracker {
 		var location = NSEvent.mouseLocation
 		location.y = screen.height - location.y
 		
+		guard settings.settings.checkFullscreen else {
+			handleDockValue(dockIsAt: currentDockSide, location: location)
+			return
+		}
+		
 		guard isFrontmostFullscreen() else {
 			if location.x < 1 ||
 				location.x < screen.width-1 ||
@@ -106,8 +116,6 @@ class MouseTracker {
 			}
 			return
 		}
-		
-		handleDockValue(dockIsAt: currentDockSide, location: location)
 	}
 	
 	func handleDockValue(dockIsAt: DockSide, location: NSPoint) {
@@ -180,6 +188,8 @@ class MouseTracker {
 		applescript(scriptMove)
 //		applescript(scriptShow)
 		currentDockSide = toSide
+		settings.settings.dockMoves += 1
+		refreshMenus()
 	}
 	
 	func getDockSize() {

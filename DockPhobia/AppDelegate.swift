@@ -12,25 +12,31 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 	
 	public var statusItem: NSStatusItem!
 	
-	var mouseTracker = MouseTracker()
+	var settings = DPSettingsModel()
+	var mouseTracker: MouseTracker
 	
+	override init() {
+		self.mouseTracker = MouseTracker(settings: settings)
+		super.init()
+	}
 	
 	func applicationDidFinishLaunching(_ aNotification: Notification) {
 		statusItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.variableLength)
 		if let button = statusItem.button {
 			button.image = NSImage(named: "cursor.slash")
 		}
-		setupMenus()
+		refreshMenus()
 	}
 	
 	func applicationWillTerminate(_ aNotification: Notification) {
-		// Insert code here to tear down your application
+		settings.saveSettings()
 	}
 	
 	func applicationSupportsSecureRestorableState(_ app: NSApplication) -> Bool {
 		return true
 	}
 	
+	//MARK: menu bar stuff
 	func setupMenus() {
 		let menu = NSMenu()
 		let start = NSMenuItem(title: describeStartButton(), action: #selector(didTapStart), keyEquivalent: "")
@@ -43,6 +49,22 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 		)
 		menu.addItem(screen)
 		
+		let dockMoves = NSMenuItem(
+			title: "Moved the Dock \(settings.settings.dockMoves) time\(settings.settings.dockMoves.plural)",
+			action: nil,
+			keyEquivalent: ""
+		)
+		menu.addItem(dockMoves)
+		
+		menu.addItem(NSMenuItem.separator())
+		
+		let checkfullscreenButton = NSMenuItem(
+			title: "Smaller deathzone in fullscreen",
+			action: #selector(checkFullscreenToggle),
+			keyEquivalent: ""
+		)
+		checkfullscreenButton.state = NSControl.StateValue(rawValue: settings.settings.checkFullscreen ? 1 : 0)
+		menu.addItem(checkfullscreenButton)
 		menu.addItem(NSMenuItem.separator())
 		
 		menu.addItem(
@@ -73,7 +95,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 		menu.addItem(quit)
 		statusItem.menu = menu
 	}
-	
 	func changeMenuIcon(running: Bool) {
 		guard let button = statusItem.button else { return }
 		switch running {
@@ -83,7 +104,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 			button.image = NSImage(named: "cursor.slash")
 		}
 	}
-	
 	@objc func didTapStart() {
 		if mouseTracker.running {
 			mouseTracker.stop()
@@ -92,22 +112,34 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 			mouseTracker.start()
 			changeMenuIcon(running: true)
 		}
-		setupMenus()
+		refreshMenus()
 	}
-	
 	@objc func quit() {
 		NSApplication.shared.terminate(self)
 	}
-	
 	@objc func moveDockObjcLeft() { mouseTracker.moveDock(.left) }
 	@objc func moveDockObjcRight() { mouseTracker.moveDock(.right) }
 	@objc func moveDockObjcBottom() { mouseTracker.moveDock(.bottom) }
-	
+	@objc func checkFullscreenToggle() {
+		settings.settings.checkFullscreen.toggle()
+		refreshMenus()
+	}
 	func describeStartButton() -> String {
 		if mouseTracker.running {
 			return "Stop tracking"
 		} else {
 			return "Start tracking"
 		}
+	}
+}
+
+func refreshMenus() {
+	guard let delegate = NSApp.delegate as? AppDelegate else { return }
+	delegate.setupMenus()
+}
+
+extension Numeric {
+	var plural: String {
+		return self == 1 ? "" : "s"
 	}
 }
