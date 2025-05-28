@@ -100,11 +100,6 @@ class MouseTracker {
 	}
 	
 	func checkMouse(_ event: NSEvent) {
-		guard !settings.settings.moveMouseInstead else {
-			print("do the thing ehre")
-			return
-		}
-		
 		var location = NSEvent.mouseLocation
 		location.y = screen.height - location.y
 		
@@ -128,30 +123,38 @@ class MouseTracker {
 		case .left:
 			guard location.x < dockHeight else { return }
 			if location.y < screen.height/2 {
-				moveDock(.bottom)
+				moveDockOrMouse(.bottom)
 				return
 			} else {
-				moveDock(.right)
+				moveDockOrMouse(.right)
 				return
 			}
 		case .bottom:
 			guard location.y > screen.height - dockHeight else { return }
 			if location.x < screen.width/2 {
-				moveDock(.right)
+				moveDockOrMouse(.right)
 				return
 			} else {
-				moveDock(.left)
+				moveDockOrMouse(.left)
 				return
 			}
 		case .right:
 			guard location.x > screen.width - dockHeight else { return }
 			if location.y < screen.height/2 {
-				moveDock(.bottom)
+				moveDockOrMouse(.bottom)
 				return
 			} else {
-				moveDock(.left)
+				moveDockOrMouse(.left)
 				return
 			}
+		}
+	}
+	
+	func moveDockOrMouse(_ dockTo: DockSide) {
+		if settings.settings.moveMouseInstead {
+			print("move mouse")
+		} else {
+			moveDock(dockTo)
 		}
 	}
 	
