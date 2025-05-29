@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 77;
+	objectVersion = 63;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -129,6 +129,7 @@
 				};
 			};
 			buildConfigurationList = A966B4D12DE0841000C721A5 /* Build configuration list for PBXProject "DockPhobia" */;
+			compatibilityVersion = "Xcode 12.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -137,7 +138,6 @@
 			);
 			mainGroup = A966B4CD2DE0841000C721A5;
 			minimizedProjectReferenceProxies = 1;
-			preferredProjectObjectVersion = 77;
 			productRefGroup = A966B4D72DE0841000C721A5 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
