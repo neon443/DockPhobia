@@ -1,5 +1,3 @@
-# DockPhobia
-
 <div align="center">
     <br/>
     <p>
