@@ -5,6 +5,13 @@
     <p>
         <img src="https://github.com/neon443/DockPhobia/blob/main/DockPhobia/Resources/Assets.xcassets/AppIcon.appiconset/DockPhobiaAppIcon.png?raw=true" title="dockphobia" alt="dockphobia icon" width="200" />
     </p>
+      <h3>DockPhobia</h3>
+	    <p>
+        <a href="https://github.com/neon443/DockPhobia/releases/latest/download/DockPhobia.dmg">
+            download
+            <img alt="GitHub Release" src="https://img.shields.io/github/v/release/neon443/DockPhobia">
+        </a>
+    </p>
     <p>
         make your Dock scared of the mouse
         <br/>
@@ -12,13 +19,10 @@
             made by neon443
         </a>
     </p>
-    <p>
-        <a href="https://github.com/neon443/DockPhobia/releases/latest/download/DockPhobia.dmg">
-            download
-        </a>
-    </p>
     <br/>
 </div>
+
+![GitHub Downloads (all assets, all releases)](https://img.shields.io/github/downloads/neon443/DockPhobia/total)
 
 Have you ever wanted to use your Dock?
 well now you cant
