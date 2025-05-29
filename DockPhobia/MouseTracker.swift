@@ -64,10 +64,12 @@ class MouseTracker {
 	
 	func checkMouse(_ event: NSEvent) {
 		let location = event.mouseLocationCG
-//		var cgpointForSkyHigh = NSEvent.mouseLocation
-//		cgpointForSkyHigh.x -= 10
-//		cgpointForSkyHigh.y -= 5
-//		skyHigh.move(to: cgpointForSkyHigh)
+		#if DEBUG
+		var cgpointForSkyHigh = NSEvent.mouseLocation
+		cgpointForSkyHigh.x -= 20
+		cgpointForSkyHigh.y -= 5
+		skyHigh.move(to: cgpointForSkyHigh)
+		#endif
 		
 		guard settings.settings.checkFullscreen else {
 			handleDockValue(dockIsAt: currentDockSide, location: location)
@@ -145,8 +147,6 @@ class MouseTracker {
 		let posX = CGFloat.random(in: rangeW)
 		let rangeH = settings.settings.mouseInsetBottom...settings.settings.mouseInsetTop
 		let posY = CGFloat.random(in: rangeH)
-		print(prevPoint)
-		print(posX, posY)
 		
 		timer?.invalidate()
 		loopIteration = 0
@@ -156,6 +156,8 @@ class MouseTracker {
 			guard let self = self else { return }
 			guard loopIteration < 500 else {
 				skyHigh.hide()
+				settings.settings.mouseMoves += 1
+				refreshMenus()
 				timer?.invalidate()
 				return
 			}
@@ -164,7 +166,7 @@ class MouseTracker {
 			let cgpoint = CGPoint(x: newPosX, y: newPosY)
 			CGWarpMouseCursorPosition(cgpoint)
 			var cgpointForSkyHigh = cgpoint
-			cgpointForSkyHigh.x -= 10
+			cgpointForSkyHigh.x -= 20
 			cgpointForSkyHigh.y += 5
 			skyHigh.move(to: cgpointForSkyHigh.invertedForScreen)
 			

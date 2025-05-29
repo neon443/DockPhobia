@@ -22,6 +22,7 @@ extension NSScreen {
 
 struct DPSettings: Codable {
 	var dockMoves: Int
+	var mouseMoves: Int
 	var checkFullscreen: Bool
 	var moveMouseInstead: Bool
 	
@@ -52,12 +53,14 @@ struct DPSettings: Codable {
 	
 	init(
 		dockMoves: Int = 0,
+		mouseMoves: Int = 0,
 		checkFullscreen: Bool = false,
 		moveMouseInstead: Bool = false,
 		insetHorizontal: CGFloat = 0.05,
 		insetVertical: CGFloat = 0.1
 	) {
 		self.dockMoves = dockMoves
+		self.mouseMoves = mouseMoves
 		self.checkFullscreen = checkFullscreen
 		self.moveMouseInstead = moveMouseInstead
 		self.insetHorizontal = insetHorizontal
@@ -69,6 +72,8 @@ struct DPSettings: Codable {
 		let container = try decoder.container(keyedBy: CodingKeys.self)
 		dockMoves = try container.decodeIfPresent(Int.self, forKey: .dockMoves)
 			?? defaults.dockMoves
+		mouseMoves = try container.decodeIfPresent(Int.self, forKey: .mouseMoves)
+		?? defaults.mouseMoves
 		
 		checkFullscreen = try container.decodeIfPresent(Bool.self, forKey: .checkFullscreen)
 			?? defaults.checkFullscreen

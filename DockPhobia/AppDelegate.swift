@@ -55,6 +55,13 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 			keyEquivalent: ""
 		)
 		menu.addItem(dockMoves)
+		
+		let mouseMoves = NSMenuItem(
+			title: "Moved the cursor \(settings.settings.mouseMoves) time\(settings.settings.mouseMoves.plural)",
+			action: nil,
+			keyEquivalent: ""
+		)
+		menu.addItem(mouseMoves)
 		menu.addItem(NSMenuItem.separator())
 		
 		let moveMouseButton = NSMenuItem(
@@ -77,15 +84,15 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 		menu.addItem(NSMenuItem.separator())
 		
 		menu.addItem(NSMenuItem(
-				title: "Move Dock to left",
+				title: "Move Dock to the left",
 				action: #selector(moveDockObjcLeft),
 				keyEquivalent: ""))
 		menu.addItem(NSMenuItem(
-				title: "Move Dock to bottom",
+				title: "Move Dock to the bottom",
 				action: #selector(moveDockObjcBottom),
 				keyEquivalent: ""))
 		menu.addItem(NSMenuItem(
-			title: "Move Dock to right",
+			title: "Move Dock to the right",
 			action: #selector(moveDockObjcRight),
 			keyEquivalent: ""))
 		menu.addItem(NSMenuItem.separator())
