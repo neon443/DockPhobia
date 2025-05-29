@@ -1,7 +1,7 @@
 <div align="center">
     <br/>
     <p>
-        <img src="https://github.com/neon443/DockPhobia/blob/main/DockPhobia/Resources/Assets.xcassets/AppIcon.appiconset/DockPhobiaAppIcon.png?raw=true" title="dockphobia" alt="dockphobia icon" width="200" />
+        <img src="https://github.com/neon443/DockPhobia/blob/main/DockPhobia/Resources/Assets.xcassets/AppIcon.appiconset/DockPhobiaAppIcon.png?raw=true" title="dockphobia" alt="dockphobia icon" width="100" />
     </p>
       <h3>DockPhobia</h3>
 	    <p>
