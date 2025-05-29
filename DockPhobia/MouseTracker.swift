@@ -10,6 +10,14 @@ import AppKit
 import Cocoa
 import ApplicationServices
 
+extension NSEvent {
+	var mouseLocationCG: CGPoint {
+		var loc = NSEvent.mouseLocation
+		loc.y = NSScreen.mainFrameHeight - loc.y
+		return loc
+	}
+}
+
 struct Screen {
 	var width: CGFloat
 	var height: CGFloat
@@ -24,6 +32,9 @@ class MouseTracker {
 	
 	var settings: DPSettingsModel
 	var skyHigh: SkyHigh
+	
+	private var timer: Timer?
+	private var loopIteration: Double = 0
 	
 	init(settings: DPSettingsModel) {
 		print(DockSide())
@@ -135,11 +146,33 @@ class MouseTracker {
 	}
 	
 	func moveMouse() {
+		let prevPoint = NSEvent().mouseLocationCG
 		let rangeW = settings.settings.mouseInsetLeading...settings.settings.mouseInsetTrailing
 		let posX = CGFloat.random(in: rangeW)
 		let rangeH = settings.settings.mouseInsetBottom...settings.settings.mouseInsetTop
 		let posY = CGFloat.random(in: rangeH)
-		CGDisplayMoveCursorToPoint(0, CGPoint(x: posX, y: posY))
+		print(prevPoint)
+		print(posX, posY)
+		
+		timer?.invalidate()
+		loopIteration = 0
+		timer = Timer(timeInterval: 0.001, repeats: true) { [weak self] _ in
+			guard let self = self else { return }
+			guard NSEvent().mouseLocationCG != CGPoint(x: posX, y: posX) else {
+				timer?.invalidate()
+				return
+			}
+			guard loopIteration < 1000 else {
+				timer?.invalidate()
+				return
+			}
+			let newPosX = (prevPoint.x > posX ? prevPoint.x-loopIteration : prevPoint.x+loopIteration)
+			let newPosY = (prevPoint.y > posY ? prevPoint.y-loopIteration : prevPoint.y+loopIteration)
+			CGWarpMouseCursorPosition(CGPoint(x: newPosX, y: newPosY))
+			
+			self.loopIteration += 4
+		}
+		RunLoop.main.add(timer!, forMode: .common)
 	}
 	
 	func moveDock(_ toSide: DockSide) {

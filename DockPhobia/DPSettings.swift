@@ -32,10 +32,10 @@ struct DPSettings: Codable {
 		NSScreen.mainFrameHeight*insetVertical
 	}
 	var mouseInsetTop: CGFloat {
-		NSScreen.mainFrameHeight*(1-(2*insetVertical))
+		NSScreen.mainFrameHeight*(1-(insetVertical))
 	}
 	var mouseInsetTrailing: CGFloat {
-		NSScreen.mainFrameWidth*(1-(2*insetHorizontal))
+		NSScreen.mainFrameWidth*(1-(insetHorizontal))
 	}
 	
 	var insetHorizontal: CGFloat
@@ -45,8 +45,8 @@ struct DPSettings: Codable {
 		return CGRect(
 			x: mouseInsetLeading,
 			y: mouseInsetBottom,
-			width: mouseInsetTrailing,
-			height: mouseInsetTop
+			width: mouseInsetTrailing - mouseInsetLeading,
+			height: mouseInsetTop - mouseInsetBottom
 		)
 	}
 	

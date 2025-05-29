@@ -23,7 +23,7 @@ class SkyHigh {
 			backing: .buffered,
 			defer: false
 		)
-		window.backgroundColor = .init(srgbRed: 1, green: 1, blue: 1, alpha: 0.1)
+		window.backgroundColor = .init(srgbRed: 0.5, green: 0.5, blue: 0.5, alpha: 0.05)
 		window.isOpaque = false
 		window.level = NSWindow.Level.statusBar + 1
 		window.ignoresMouseEvents = true
