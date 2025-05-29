@@ -12,16 +12,13 @@ class SkyHigh {
 	private var window: NSWindow
 	private var x = 1
 	private var timer: Timer?
+	var settings: DPSettingsModel
 	
-	init() {
-		guard let screen = NSScreen.main?.frame else { fatalError() }
+	init(settings: DPSettingsModel) {
+		self.settings = settings
+		
 		self.window = NSWindow(
-			contentRect: CGRect(
-				x: screen.width*0.05,
-				y: screen.height*0.1,
-				width: screen.width*0.9,
-				height: screen.height*0.8
-			),
+			contentRect: settings.settings.mouseMoveRect,
 			styleMask: .borderless,
 			backing: .buffered,
 			defer: false
@@ -31,12 +28,12 @@ class SkyHigh {
 		window.level = NSWindow.Level.statusBar + 1
 		window.ignoresMouseEvents = true
 		window.hasShadow = true
+		window.collectionBehavior = NSWindow.CollectionBehavior.canJoinAllSpaces.union(.stationary)
 		window.makeKeyAndOrderFront(nil)
-		window.setFrameOrigin(NSPoint(x: screen.width*0.05, y: screen.height*0.1))
 	}
 	
 	func move() {
-		x = 1
+		x = 5
 		timer?.invalidate()
 		timer = Timer(timeInterval: 0.01, repeats: true) { [weak self] _ in
 			guard let self = self else { return }
@@ -45,7 +42,7 @@ class SkyHigh {
 				return
 			}
 			self.window.setFrameOrigin(NSPoint(x: 1000-self.x, y: 1000-self.x))
-			self.x += 1
+			self.x += 5
 		}
 		RunLoop.current.add(timer!, forMode: .common)
 	}

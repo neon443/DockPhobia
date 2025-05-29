@@ -8,10 +8,78 @@
 import Foundation
 import AppKit
 
+extension NSScreen {
+	static var mainFrame: CGRect {
+		main?.frame ?? CGRect(x: 0, y: 0, width: 1920, height: 1080)
+	}
+	static var mainFrameWidth: CGFloat {
+		main?.frame.width ?? 1920
+	}
+	static var mainFrameHeight: CGFloat {
+		main?.frame.height ?? 1080
+	}
+}
+
 struct DPSettings: Codable {
-	var dockMoves: Int = 0
-	var checkFullscreen: Bool = false
-	var moveMouseInstead: Bool = false
+	var dockMoves: Int
+	var checkFullscreen: Bool
+	var moveMouseInstead: Bool
+	
+	var mouseInsetLeading: CGFloat {
+		NSScreen.mainFrameWidth*insetHorizontal
+	}
+	var mouseInsetBottom: CGFloat {
+		NSScreen.mainFrameHeight*insetVertical
+	}
+	var mouseInsetTop: CGFloat {
+		NSScreen.mainFrameHeight*(1-(2*insetVertical))
+	}
+	var mouseInsetTrailing: CGFloat {
+		NSScreen.mainFrameWidth*(1-(2*insetHorizontal))
+	}
+	
+	var insetHorizontal: CGFloat
+	var insetVertical: CGFloat
+	
+	var mouseMoveRect: CGRect {
+		return CGRect(
+			x: mouseInsetLeading,
+			y: mouseInsetBottom,
+			width: mouseInsetTrailing,
+			height: mouseInsetTop
+		)
+	}
+	
+	init(
+		dockMoves: Int = 0,
+		checkFullscreen: Bool = false,
+		moveMouseInstead: Bool = false,
+		insetHorizontal: CGFloat = 0.05,
+		insetVertical: CGFloat = 0.1
+	) {
+		self.dockMoves = dockMoves
+		self.checkFullscreen = checkFullscreen
+		self.moveMouseInstead = moveMouseInstead
+		self.insetHorizontal = insetHorizontal
+		self.insetVertical = insetVertical
+	}
+	
+	init(from decoder: any Decoder) throws {
+		let defaults = DPSettings()
+		let container = try decoder.container(keyedBy: CodingKeys.self)
+		dockMoves = try container.decodeIfPresent(Int.self, forKey: .dockMoves)
+			?? defaults.dockMoves
+		
+		checkFullscreen = try container.decodeIfPresent(Bool.self, forKey: .checkFullscreen)
+			?? defaults.checkFullscreen
+		moveMouseInstead = try container.decodeIfPresent(Bool.self, forKey: .moveMouseInstead)
+			?? defaults.moveMouseInstead
+		
+		insetHorizontal = try container.decodeIfPresent(CGFloat.self, forKey: .insetHorizontal)
+		?? defaults.insetHorizontal
+		insetVertical = try container.decodeIfPresent(CGFloat.self, forKey: .insetVertical)
+		?? defaults.insetVertical
+	}
 }
 
 class DPSettingsModel {

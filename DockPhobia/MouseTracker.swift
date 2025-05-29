@@ -23,22 +23,19 @@ class MouseTracker {
 	var dockHeight: CGFloat = 0
 	
 	var settings: DPSettingsModel
-	var skyHigh = SkyHigh()
+	var skyHigh: SkyHigh
 	
 	init(settings: DPSettingsModel) {
 		print(DockSide())
-		if let screen = NSScreen.main {
-			let rect = screen.frame
-			self.screen = Screen(
-				width: rect.width,
-				height: rect.height
-			)
-			print(self.screen)
-		} else {
-			fatalError("no screen wtf???")
-		}
+		
+		self.screen = Screen(
+			width: NSScreen.mainFrameWidth,
+			height: NSScreen.mainFrameHeight
+		)
+		print(self.screen)
 		
 		self.settings = settings
+		self.skyHigh = SkyHigh(settings: settings)
 		
 		self.currentDockSide = .left
 		moveDock(.bottom)
@@ -138,9 +135,9 @@ class MouseTracker {
 	}
 	
 	func moveMouse() {
-		let rangeW = screen.width*0.1...screen.width*0.9
+		let rangeW = settings.settings.mouseInsetLeading...settings.settings.mouseInsetTrailing
 		let posX = CGFloat.random(in: rangeW)
-		let rangeH = screen.height*0.1...screen.height*0.9
+		let rangeH = settings.settings.mouseInsetBottom...settings.settings.mouseInsetTop
 		let posY = CGFloat.random(in: rangeH)
 		CGDisplayMoveCursorToPoint(0, CGPoint(x: posX, y: posY))
 	}
@@ -173,7 +170,6 @@ class MouseTracker {
 	}
 	
 	func getDockSize() {
-		guard let screen = NSScreen.main?.frame else { fatalError() }
 		guard let screenVisible = NSScreen.main?.visibleFrame else { fatalError() }
 		self.dockHeight = screen.height - screenVisible.height
 	}
