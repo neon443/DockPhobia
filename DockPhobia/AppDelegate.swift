@@ -7,7 +7,7 @@
 
 import AppKit
 
-@main
+@NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
 	
 	public var statusItem: NSStatusItem!

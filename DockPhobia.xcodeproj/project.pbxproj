@@ -13,6 +13,7 @@
 		A966B4F82DE0852900C721A5 /* MouseTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = A966B4F72DE0852900C721A5 /* MouseTracker.swift */; };
 		A98C20C62DE614180008D61C /* DPSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = A98C20C52DE614180008D61C /* DPSettings.swift */; };
 		A9C9AF812DE7776A0039D7A5 /* DockSide.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9C9AF802DE777530039D7A5 /* DockSide.swift */; };
+		A9C9AF832DE77CB70039D7A5 /* SkyHigh.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9C9AF822DE77CB70039D7A5 /* SkyHigh.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,6 +26,7 @@
 		A97798072DE485F200B6CB13 /* Config.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Config.xcconfig; sourceTree = "<group>"; };
 		A98C20C52DE614180008D61C /* DPSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DPSettings.swift; sourceTree = "<group>"; };
 		A9C9AF802DE777530039D7A5 /* DockSide.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DockSide.swift; sourceTree = "<group>"; };
+		A9C9AF822DE77CB70039D7A5 /* SkyHigh.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkyHigh.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -76,6 +78,7 @@
 			children = (
 				A966B4EE2DE0842400C721A5 /* AppDelegate.swift */,
 				A966B4F72DE0852900C721A5 /* MouseTracker.swift */,
+				A9C9AF822DE77CB70039D7A5 /* SkyHigh.swift */,
 				A98C20C52DE614180008D61C /* DPSettings.swift */,
 				A9C9AF802DE777530039D7A5 /* DockSide.swift */,
 				A94BEC102DE23ECE00D4811D /* Views */,
@@ -159,6 +162,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A98C20C62DE614180008D61C /* DPSettings.swift in Sources */,
+				A9C9AF832DE77CB70039D7A5 /* SkyHigh.swift in Sources */,
 				A966B4F82DE0852900C721A5 /* MouseTracker.swift in Sources */,
 				A966B4F42DE0842500C721A5 /* AppDelegate.swift in Sources */,
 				A9C9AF812DE7776A0039D7A5 /* DockSide.swift in Sources */,

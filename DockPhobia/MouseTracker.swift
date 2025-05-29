@@ -23,6 +23,7 @@ class MouseTracker {
 	var dockHeight: CGFloat = 0
 	
 	var settings: DPSettingsModel
+	var skyHigh = SkyHigh()
 	
 	init(settings: DPSettingsModel) {
 		print(DockSide())
@@ -97,7 +98,7 @@ class MouseTracker {
 	
 	func moveDockOrMouse(_ dockTo: DockSide) {
 		if settings.settings.moveMouseInstead {
-			print("move mouse")
+			moveMouse()
 		} else {
 			moveDock(dockTo)
 		}
@@ -107,6 +108,24 @@ class MouseTracker {
 		self.monitor = NSEvent.addGlobalMonitorForEvents(matching: .mouseMoved, handler: checkMouse)
 		self.running = true
 		print("started tracking")
+		
+		
+		
+		
+		
+		
+		skyHigh.move()
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
 	}
 	
 	func stop() {
@@ -116,6 +135,14 @@ class MouseTracker {
 		}
 		
 		print("stop tracking")
+	}
+	
+	func moveMouse() {
+		let rangeW = screen.width*0.1...screen.width*0.9
+		let posX = CGFloat.random(in: rangeW)
+		let rangeH = screen.height*0.1...screen.height*0.9
+		let posY = CGFloat.random(in: rangeH)
+		CGDisplayMoveCursorToPoint(0, CGPoint(x: posX, y: posY))
 	}
 	
 	func moveDock(_ toSide: DockSide) {
