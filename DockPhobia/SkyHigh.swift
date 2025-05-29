@@ -18,12 +18,17 @@ class SkyHigh {
 		self.settings = settings
 		
 		self.window = NSWindow(
-			contentRect: settings.settings.mouseMoveRect,
+			contentRect: CGRect(
+				x: NSScreen.mainFrameWidth/2,
+				y: NSScreen.mainFrameHeight/2,
+				width: 50,
+				height: 50
+			),
 			styleMask: .borderless,
 			backing: .buffered,
 			defer: false
 		)
-		window.backgroundColor = .init(srgbRed: 0.5, green: 0.5, blue: 0.5, alpha: 0.05)
+		window.backgroundColor = .init(srgbRed: 1, green: 1, blue: 1, alpha: 0.2)
 		window.isOpaque = false
 		window.level = NSWindow.Level.statusBar + 1
 		window.ignoresMouseEvents = true
@@ -32,18 +37,7 @@ class SkyHigh {
 		window.makeKeyAndOrderFront(nil)
 	}
 	
-	func move() {
-		x = 5
-		timer?.invalidate()
-		timer = Timer(timeInterval: 0.01, repeats: true) { [weak self] _ in
-			guard let self = self else { return }
-			guard x < 1001 else {
-				timer?.invalidate()
-				return
-			}
-			self.window.setFrameOrigin(NSPoint(x: 1000-self.x, y: 1000-self.x))
-			self.x += 5
-		}
-		RunLoop.current.add(timer!, forMode: .common)
+	func move(to: CGPoint) {
+		self.window.setFrameOrigin(to)
 	}
 }
