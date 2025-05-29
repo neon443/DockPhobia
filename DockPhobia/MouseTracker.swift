@@ -18,6 +18,15 @@ extension NSEvent {
 	}
 }
 
+extension CGPoint {
+	var invertedForScreen: CGPoint {
+		return CGPoint(
+			x: self.x,
+			y: NSScreen.mainFrameHeight - self.y
+		)
+	}
+}
+
 struct Screen {
 	var width: CGFloat
 	var height: CGFloat
@@ -55,7 +64,10 @@ class MouseTracker {
 	
 	func checkMouse(_ event: NSEvent) {
 		let location = event.mouseLocationCG
-		skyHigh.move(to: NSEvent.mouseLocation)
+//		var cgpointForSkyHigh = NSEvent.mouseLocation
+//		cgpointForSkyHigh.x -= 10
+//		cgpointForSkyHigh.y -= 5
+//		skyHigh.move(to: cgpointForSkyHigh)
 		
 		guard settings.settings.checkFullscreen else {
 			handleDockValue(dockIsAt: currentDockSide, location: location)
@@ -138,14 +150,12 @@ class MouseTracker {
 		
 		timer?.invalidate()
 		loopIteration = 0
-		skyHigh.move(to: prevPoint)
-		timer = Timer(timeInterval: 0.001, repeats: true) { [weak self] _ in
+		skyHigh.move(to: prevPoint.invertedForScreen)
+		skyHigh.show()
+		timer = Timer(timeInterval: 0.005, repeats: true) { [weak self] _ in
 			guard let self = self else { return }
-			guard NSEvent().mouseLocationCG != CGPoint(x: posX, y: posX) else {
-				timer?.invalidate()
-				return
-			}
-			guard loopIteration < 1000 else {
+			guard loopIteration < 500 else {
+				skyHigh.hide()
 				timer?.invalidate()
 				return
 			}
@@ -153,9 +163,12 @@ class MouseTracker {
 			let newPosY = (prevPoint.y > posY ? prevPoint.y-loopIteration : prevPoint.y+loopIteration)
 			let cgpoint = CGPoint(x: newPosX, y: newPosY)
 			CGWarpMouseCursorPosition(cgpoint)
-			skyHigh.move(to: cgpoint)
+			var cgpointForSkyHigh = cgpoint
+			cgpointForSkyHigh.x -= 10
+			cgpointForSkyHigh.y += 5
+			skyHigh.move(to: cgpointForSkyHigh.invertedForScreen)
 			
-			self.loopIteration += 4
+			self.loopIteration += 1
 		}
 		RunLoop.main.add(timer!, forMode: .common)
 	}
