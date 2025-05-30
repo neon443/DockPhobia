@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Scheme
+   LastUpgradeVersion = "1640"
+   version = "1.7">
+   <BuildAction
+      parallelizeBuildables = "YES"
+      buildImplicitDependencies = "YES"
+      buildArchitectures = "Automatic">
+      <PostActions>
+         <ExecutionAction
+            ActionType = "Xcode.IDEStandardExecutionActionsCore.ExecutionActionType.ShellScriptAction">
+            <ActionContent
+               title = "Run Script"
+               scriptText = "# Type a script or drag a script file from your workspace to insert its path.&#10;#!/bin/bash&#10;&#10;CONFIG_FILE=&quot;${SRCROOT}/Config.xcconfig&quot;&#10;BUILD_KEY=&quot;BUILD_ID&quot;&#10;&#10;if [ ! -f &quot;$CONFIG_FILE&quot; ]; then&#10;  echo &quot;Error: $CONFIG_FILE not found!&quot;&#10;  exit 1&#10;fi&#10;&#10;# Extract current value&#10;CURRENT_VALUE=$(grep &quot;^${BUILD_KEY}&quot; &quot;$CONFIG_FILE&quot; | cut -d &apos;=&apos; -f2 | tr -d &apos; &apos;)&#10;&#10;if [[ -z &quot;$CURRENT_VALUE&quot; ]]; then&#10;  echo &quot;Error: ${BUILD_KEY} not found in $CONFIG_FILE&quot;&#10;  exit 1&#10;fi&#10;&#10;# Increment value&#10;NEW_VALUE=$((CURRENT_VALUE + 1))&#10;&#10;# Replace in file&#10;sed -i &apos;&apos; &quot;s/^${BUILD_KEY} *= *.*/${BUILD_KEY} = ${NEW_VALUE}/&quot; &quot;$CONFIG_FILE&quot;&#10;&#10;echo &quot;Updated ${BUILD_KEY} to ${NEW_VALUE}&quot;&#10;&#10;"
+               shellToInvoke = "/bin/sh">
+               <EnvironmentBuildable>
+                  <BuildableReference
+                     BuildableIdentifier = "primary"
+                     BlueprintIdentifier = "A966B4D52DE0841000C721A5"
+                     BuildableName = "DockPhobia.app"
+                     BlueprintName = "DockPhobia"
+                     ReferencedContainer = "container:DockPhobia.xcodeproj">
+                  </BuildableReference>
+               </EnvironmentBuildable>
+            </ActionContent>
+         </ExecutionAction>
+      </PostActions>
+      <BuildActionEntries>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "A966B4D52DE0841000C721A5"
+               BuildableName = "DockPhobia.app"
+               BlueprintName = "DockPhobia"
+               ReferencedContainer = "container:DockPhobia.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+      </BuildActionEntries>
+   </BuildAction>
+   <TestAction
+      buildConfiguration = "Debug"
+      selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
+      selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
+      shouldUseLaunchSchemeArgsEnv = "YES"
+      shouldAutocreateTestPlan = "YES">
+   </TestAction>
+   <LaunchAction
+      buildConfiguration = "Debug"
+      selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
+      selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
+      launchStyle = "0"
+      useCustomWorkingDirectory = "NO"
+      ignoresPersistentStateOnLaunch = "NO"
+      debugDocumentVersioning = "YES"
+      debugServiceExtension = "internal"
+      allowLocationSimulation = "YES">
+      <BuildableProductRunnable
+         runnableDebuggingMode = "0">
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "A966B4D52DE0841000C721A5"
+            BuildableName = "DockPhobia.app"
+            BlueprintName = "DockPhobia"
+            ReferencedContainer = "container:DockPhobia.xcodeproj">
+         </BuildableReference>
+      </BuildableProductRunnable>
+   </LaunchAction>
+   <ProfileAction
+      buildConfiguration = "Release"
+      shouldUseLaunchSchemeArgsEnv = "YES"
+      savedToolIdentifier = ""
+      useCustomWorkingDirectory = "NO"
+      debugDocumentVersioning = "YES">
+      <BuildableProductRunnable
+         runnableDebuggingMode = "0">
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "A966B4D52DE0841000C721A5"
+            BuildableName = "DockPhobia.app"
+            BlueprintName = "DockPhobia"
+            ReferencedContainer = "container:DockPhobia.xcodeproj">
+         </BuildableReference>
+      </BuildableProductRunnable>
+   </ProfileAction>
+   <AnalyzeAction
+      buildConfiguration = "Debug">
+   </AnalyzeAction>
+   <ArchiveAction
+      buildConfiguration = "Release"
+      revealArchiveInOrganizer = "YES">
+   </ArchiveAction>
+</Scheme>
