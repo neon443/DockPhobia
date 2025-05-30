@@ -30,6 +30,7 @@
 		A9C9AF802DE777530039D7A5 /* DockSide.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DockSide.swift; sourceTree = "<group>"; };
 		A9C9AF822DE77CB70039D7A5 /* SkyHigh.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkyHigh.swift; sourceTree = "<group>"; };
 		A9C9B0672DE888B20039D7A5 /* Preferences.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Preferences.swift; sourceTree = "<group>"; };
+		A9C9B06E2DE9B55F0039D7A5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,6 +82,7 @@
 		A966B4F32DE0842400C721A5 /* DockPhobia */ = {
 			isa = PBXGroup;
 			children = (
+				A9C9B06E2DE9B55F0039D7A5 /* Info.plist */,
 				A966B4EE2DE0842400C721A5 /* AppDelegate.swift */,
 				A966B4F72DE0852900C721A5 /* MouseTracker.swift */,
 				A9C9AF822DE77CB70039D7A5 /* SkyHigh.swift */,
@@ -316,6 +318,7 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = DockPhobia/Info.plist;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.entertainment";
 				INFOPLIST_KEY_LSUIElement = YES;
 				INFOPLIST_KEY_NSAppleEventsUsageDescription = _;
@@ -351,6 +354,7 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = DockPhobia/Info.plist;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.entertainment";
 				INFOPLIST_KEY_LSUIElement = YES;
 				INFOPLIST_KEY_NSAppleEventsUsageDescription = _;
