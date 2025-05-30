@@ -64,12 +64,12 @@ class MouseTracker {
 	
 	func checkMouse(_ event: NSEvent) {
 		let location = event.mouseLocationCG
-		#if DEBUG
+#if DEBUG
 		var cgpointForSkyHigh = NSEvent.mouseLocation
 		cgpointForSkyHigh.x -= 20
 		cgpointForSkyHigh.y -= 5
 		skyHigh.move(to: cgpointForSkyHigh)
-		#endif
+#endif
 		
 		guard settings.settings.checkFullscreen else {
 			handleDockValue(dockIsAt: currentDockSide, location: location)
@@ -127,12 +127,18 @@ class MouseTracker {
 	}
 	
 	func start() {
+#if DEBUG
+		skyHigh.show()
+#endif
 		self.monitor = NSEvent.addGlobalMonitorForEvents(matching: .mouseMoved, handler: checkMouse)
 		self.running = true
 		print("started tracking")
 	}
 	
 	func stop() {
+#if DEBUG
+		skyHigh.hide()
+#endif
 		if let monitor = monitor {
 			NSEvent.removeMonitor(monitor)
 			self.running = false
@@ -177,26 +183,26 @@ class MouseTracker {
 	
 	func moveDock(_ toSide: DockSide) {
 		guard currentDockSide != toSide else { return }
-//		let scriptHide = """
-//  tell application "System Events" 
-//    tell dock preferences
-//      set autohide to true
-//    end tell
-//  end tell
-//  """
-//		
-//		let scriptShow = scriptHide.replacingOccurrences(of: "true", with: "false")
+		//		let scriptHide = """
+		//  tell application "System Events"
+		//    tell dock preferences
+		//      set autohide to true
+		//    end tell
+		//  end tell
+		//  """
+		//
+		//		let scriptShow = scriptHide.replacingOccurrences(of: "true", with: "false")
 		
 		let scriptMove = """
   tell application "System Events"
    tell dock preferences
-    set screen edge to \(toSide)
+	set screen edge to \(toSide)
    end tell
   end tell
   """
-//		applescript(scriptHide)
+		//		applescript(scriptHide)
 		applescript(scriptMove)
-//		applescript(scriptShow)
+		//		applescript(scriptShow)
 		currentDockSide = toSide
 		settings.settings.dockMoves += 1
 		refreshMenus()

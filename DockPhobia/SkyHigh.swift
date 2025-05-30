@@ -35,9 +35,6 @@ class SkyHigh {
 		window.ignoresMouseEvents = true
 		window.hasShadow = true
 		window.collectionBehavior = NSWindow.CollectionBehavior.canJoinAllSpaces.union(.stationary)
-		#if DEBUG
-		show()
-		#endif
 	}
 	
 	func move(to: CGPoint) {

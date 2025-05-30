@@ -71,14 +71,14 @@ struct DPSettings: Codable {
 		let defaults = DPSettings()
 		let container = try decoder.container(keyedBy: CodingKeys.self)
 		dockMoves = try container.decodeIfPresent(Int.self, forKey: .dockMoves)
-			?? defaults.dockMoves
+		?? defaults.dockMoves
 		mouseMoves = try container.decodeIfPresent(Int.self, forKey: .mouseMoves)
 		?? defaults.mouseMoves
 		
 		checkFullscreen = try container.decodeIfPresent(Bool.self, forKey: .checkFullscreen)
-			?? defaults.checkFullscreen
+		?? defaults.checkFullscreen
 		moveMouseInstead = try container.decodeIfPresent(Bool.self, forKey: .moveMouseInstead)
-			?? defaults.moveMouseInstead
+		?? defaults.moveMouseInstead
 		
 		insetHorizontal = try container.decodeIfPresent(CGFloat.self, forKey: .insetHorizontal)
 		?? defaults.insetHorizontal

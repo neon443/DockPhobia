@@ -101,13 +101,13 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 		menu.addItem(NSMenuItem.separator())
 		
 		menu.addItem(NSMenuItem(
-				title: "Move Dock to the left",
-				action: #selector(moveDockObjcLeft),
-				keyEquivalent: ""))
+			title: "Move Dock to the left",
+			action: #selector(moveDockObjcLeft),
+			keyEquivalent: ""))
 		menu.addItem(NSMenuItem(
-				title: "Move Dock to the bottom",
-				action: #selector(moveDockObjcBottom),
-				keyEquivalent: ""))
+			title: "Move Dock to the bottom",
+			action: #selector(moveDockObjcBottom),
+			keyEquivalent: ""))
 		menu.addItem(NSMenuItem(
 			title: "Move Dock to the right",
 			action: #selector(moveDockObjcRight),
