@@ -14,8 +14,9 @@
 		A98C20C62DE614180008D61C /* DPSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = A98C20C52DE614180008D61C /* DPSettings.swift */; };
 		A9C9AF812DE7776A0039D7A5 /* DockSide.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9C9AF802DE777530039D7A5 /* DockSide.swift */; };
 		A9C9AF832DE77CB70039D7A5 /* SkyHigh.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9C9AF822DE77CB70039D7A5 /* SkyHigh.swift */; };
-		A9C9B0682DE888B20039D7A5 /* Preferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9C9B0672DE888B20039D7A5 /* Preferences.swift */; };
 		A9C9B06D2DE99E5F0039D7A5 /* Sparkle in Frameworks */ = {isa = PBXBuildFile; productRef = A9C9B06C2DE99E5F0039D7A5 /* Sparkle */; };
+		A9C9B0712DE9F6E60039D7A5 /* Preferences.xib in Resources */ = {isa = PBXBuildFile; fileRef = A9C9B0702DE9F6E60039D7A5 /* Preferences.xib */; };
+		A9C9B0732DE9F7020039D7A5 /* SettingsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9C9B0722DE9F7020039D7A5 /* SettingsController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,8 +30,9 @@
 		A98C20C52DE614180008D61C /* DPSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DPSettings.swift; sourceTree = "<group>"; };
 		A9C9AF802DE777530039D7A5 /* DockSide.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DockSide.swift; sourceTree = "<group>"; };
 		A9C9AF822DE77CB70039D7A5 /* SkyHigh.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkyHigh.swift; sourceTree = "<group>"; };
-		A9C9B0672DE888B20039D7A5 /* Preferences.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Preferences.swift; sourceTree = "<group>"; };
 		A9C9B06E2DE9B55F0039D7A5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		A9C9B0702DE9F6E60039D7A5 /* Preferences.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Preferences.xib; sourceTree = "<group>"; };
+		A9C9B0722DE9F7020039D7A5 /* SettingsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,8 +58,8 @@
 		A94BEC102DE23ECE00D4811D /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				A9C9B0702DE9F6E60039D7A5 /* Preferences.xib */,
 				A94BEC0E2DE23E8500D4811D /* MainMenu.xib */,
-				A9C9B0672DE888B20039D7A5 /* Preferences.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -88,6 +90,7 @@
 				A9C9AF822DE77CB70039D7A5 /* SkyHigh.swift */,
 				A98C20C52DE614180008D61C /* DPSettings.swift */,
 				A9C9AF802DE777530039D7A5 /* DockSide.swift */,
+				A9C9B0722DE9F7020039D7A5 /* SettingsController.swift */,
 				A94BEC102DE23ECE00D4811D /* Views */,
 				A94BEC0A2DE21F8100D4811D /* Resources */,
 				A966B4F02DE0842400C721A5 /* DockPhobia.entitlements */,
@@ -160,6 +163,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A9C9B0712DE9F6E60039D7A5 /* Preferences.xib in Resources */,
 				A94BEC0F2DE23E8500D4811D /* MainMenu.xib in Resources */,
 				A966B4F52DE0842500C721A5 /* Assets.xcassets in Resources */,
 			);
@@ -174,7 +178,7 @@
 			files = (
 				A98C20C62DE614180008D61C /* DPSettings.swift in Sources */,
 				A9C9AF832DE77CB70039D7A5 /* SkyHigh.swift in Sources */,
-				A9C9B0682DE888B20039D7A5 /* Preferences.swift in Sources */,
+				A9C9B0732DE9F7020039D7A5 /* SettingsController.swift in Sources */,
 				A966B4F82DE0852900C721A5 /* MouseTracker.swift in Sources */,
 				A966B4F42DE0842500C721A5 /* AppDelegate.swift in Sources */,
 				A9C9AF812DE7776A0039D7A5 /* DockSide.swift in Sources */,

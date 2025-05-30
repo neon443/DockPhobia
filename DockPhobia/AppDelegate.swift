@@ -12,6 +12,7 @@ import Sparkle
 class AppDelegate: NSObject, NSApplicationDelegate {
 	
 	public var statusItem: NSStatusItem!
+	public var prefsWindow: NSWindowController?
 	
 	var settings = DPSettingsModel()
 	var mouseTracker: MouseTracker
@@ -113,6 +114,13 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 			keyEquivalent: ""))
 		menu.addItem(NSMenuItem.separator())
 		
+		let prefs = NSMenuItem(
+			title: "Preferences",
+			action: #selector(tappedPrefs),
+			keyEquivalent: ","
+		)
+		menu.addItem(prefs)
+		
 		let quit = NSMenuItem(title: "Quit", action: #selector(quit), keyEquivalent: "q")
 		menu.addItem(quit)
 		statusItem.menu = menu
@@ -125,6 +133,13 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 		case false:
 			button.image = NSImage(named: "cursor.slash")
 		}
+	}
+	@objc func tappedPrefs() {
+		if prefsWindow == nil {
+			prefsWindow = DPPreferencesWindowController()
+		}
+		prefsWindow!.showWindow(nil)
+		prefsWindow!.window?.orderFront(nil)
 	}
 	@objc func didTapStart() {
 		if mouseTracker.running {
