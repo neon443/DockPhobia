@@ -2,7 +2,11 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>SUFeedURL</key>
+	<string>https://neon443.github.io/appcasts/DockPhobia/appcast.xml</string>
 	<key>SUpublicEDKey</key>
 	<string>ahgIyJGs4MCQ6UXwQ11aknk3a6GwOodHKSmVv4bw6KY=</string>
+	<key>SUEnableAutomaticChecks</key>
+	<true/>
 </dict>
 </plist>

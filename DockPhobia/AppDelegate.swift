@@ -17,8 +17,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 	var mouseTracker: MouseTracker
 	let updateController: SPUStandardUpdaterController
 	
-	var checkforUpdatesMenuItem: NSMenuItem!
-	
 	override init() {
 		self.mouseTracker = MouseTracker(settings: settings)
 		//call .startUpdater() later
@@ -52,8 +50,12 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 		let start = NSMenuItem(title: describeStartButton(), action: #selector(didTapStart), keyEquivalent: "")
 		menu.addItem(start)
 		
+		let checkforUpdatesMenuItem = NSMenuItem(
+			title: "Check for Updates...",
+			action: #selector(SPUStandardUpdaterController.checkForUpdates(_:)),
+			keyEquivalent: ""
+		)
 		checkforUpdatesMenuItem.target = updateController
-		checkforUpdatesMenuItem.action = #selector(SPUStandardUpdaterController.checkForUpdates(_:))
 		menu.addItem(checkforUpdatesMenuItem)
 		
 		let screen = NSMenuItem(
