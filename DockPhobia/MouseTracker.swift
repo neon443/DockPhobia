@@ -196,7 +196,7 @@ class MouseTracker {
 		let scriptMove = """
   tell application "System Events"
    tell dock preferences
-	set screen edge to \(toSide)
+    set screen edge to \(toSide)
    end tell
   end tell
   """

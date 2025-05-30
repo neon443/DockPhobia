@@ -51,21 +51,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 		let start = NSMenuItem(title: describeStartButton(), action: #selector(didTapStart), keyEquivalent: "")
 		menu.addItem(start)
 		
-		let checkforUpdatesMenuItem = NSMenuItem(
-			title: "Check for Updates...",
-			action: #selector(SPUStandardUpdaterController.checkForUpdates(_:)),
-			keyEquivalent: ""
-		)
-		checkforUpdatesMenuItem.target = updateController
-		menu.addItem(checkforUpdatesMenuItem)
-		
-		let screen = NSMenuItem(
-			title: "\(mouseTracker.screen.width)x\(mouseTracker.screen.height)",
-			action: nil,
-			keyEquivalent: ""
-		)
-		menu.addItem(screen)
-		
 		let dockMoves = NSMenuItem(
 			title: "Moved the Dock \(settings.settings.dockMoves) time\(settings.settings.dockMoves.plural)",
 			action: nil,
@@ -91,28 +76,27 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 		
 		menu.addItem(NSMenuItem.separator())
 		
-		let checkfullscreenButton = NSMenuItem(
-			title: "Smaller deathzone in fullscreen",
-			action: #selector(checkFullscreenToggle),
-			keyEquivalent: ""
-		)
-		checkfullscreenButton.state = NSControl.StateValue(rawValue: settings.settings.checkFullscreen ? 1 : 0)
-		menu.addItem(checkfullscreenButton)
-		menu.addItem(NSMenuItem.separator())
-		
 		menu.addItem(NSMenuItem(
 			title: "Move Dock to the left",
 			action: #selector(moveDockObjcLeft),
-			keyEquivalent: ""))
+			keyEquivalent: "1"))
 		menu.addItem(NSMenuItem(
 			title: "Move Dock to the bottom",
 			action: #selector(moveDockObjcBottom),
-			keyEquivalent: ""))
+			keyEquivalent: "2"))
 		menu.addItem(NSMenuItem(
 			title: "Move Dock to the right",
 			action: #selector(moveDockObjcRight),
-			keyEquivalent: ""))
+			keyEquivalent: "3"))
 		menu.addItem(NSMenuItem.separator())
+		
+		let checkforUpdatesMenuItem = NSMenuItem(
+			title: "Check for Updates...",
+			action: #selector(SPUStandardUpdaterController.checkForUpdates(_:)),
+			keyEquivalent: ""
+		)
+		checkforUpdatesMenuItem.target = updateController
+		menu.addItem(checkforUpdatesMenuItem)
 		
 		let prefs = NSMenuItem(
 			title: "Preferences",
@@ -136,9 +120,13 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 	}
 	@objc func tappedPrefs() {
 		if prefsWindow == nil {
-			prefsWindow = DPPreferencesWindowController()
+			prefsWindow = DPPreferencesWindowController(
+				mouseTracker: mouseTracker,
+				settings: settings,
+				updater: updateController
+			)
 		}
-		prefsWindow!.showWindow(nil)
+	
 		prefsWindow!.window?.orderFront(nil)
 	}
 	@objc func didTapStart() {
