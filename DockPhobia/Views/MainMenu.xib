@@ -414,19 +414,6 @@
             </items>
             <point key="canvasLocation" x="200" y="121"/>
         </menu>
-        <menu id="ONX-cK-IuT">
-            <items>
-                <menuItem title="Item 1" id="6WY-F1-Y6A">
-                    <modifierMask key="keyEquivalentModifierMask"/>
-                </menuItem>
-                <menuItem title="Item 2" id="Vew-Im-EWB">
-                    <modifierMask key="keyEquivalentModifierMask"/>
-                </menuItem>
-                <menuItem title="Item 3" id="dVu-3p-SKK">
-                    <modifierMask key="keyEquivalentModifierMask"/>
-                </menuItem>
-            </items>
-            <point key="canvasLocation" x="-160" y="321"/>
-        </menu>
+        <userDefaultsController representsSharedInstance="YES" id="KLo-tU-Av3"/>
     </objects>
 </document>

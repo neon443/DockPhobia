@@ -6,6 +6,7 @@
 //
 
 import AppKit
+import Sparkle
 
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
@@ -14,9 +15,18 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 	
 	var settings = DPSettingsModel()
 	var mouseTracker: MouseTracker
+	let updateController: SPUStandardUpdaterController
+	
+	var checkforUpdatesMenuItem: NSMenuItem!
 	
 	override init() {
 		self.mouseTracker = MouseTracker(settings: settings)
+		//call .startUpdater() later
+		updateController = SPUStandardUpdaterController(
+			startingUpdater: true,
+			updaterDelegate: nil,
+			userDriverDelegate: nil
+		)
 		super.init()
 	}
 	
@@ -41,6 +51,10 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 		let menu = NSMenu()
 		let start = NSMenuItem(title: describeStartButton(), action: #selector(didTapStart), keyEquivalent: "")
 		menu.addItem(start)
+		
+		checkforUpdatesMenuItem.target = updateController
+		checkforUpdatesMenuItem.action = #selector(SPUStandardUpdaterController.checkForUpdates(_:))
+		menu.addItem(checkforUpdatesMenuItem)
 		
 		let screen = NSMenuItem(
 			title: "\(mouseTracker.screen.width)x\(mouseTracker.screen.height)",
