@@ -13,7 +13,7 @@
       "size" : "16x16"
     },
     {
-      "filename" : "DockPhobiaAppIcon32 1.png",
+      "filename" : "DockPhobiaAppIcon32.png",
       "idiom" : "mac",
       "scale" : "1x",
       "size" : "32x32"
@@ -31,7 +31,7 @@
       "size" : "128x128"
     },
     {
-      "filename" : "DockPhobiaAppIcon256 1.png",
+      "filename" : "DockPhobiaAppIcon256.png",
       "idiom" : "mac",
       "scale" : "2x",
       "size" : "128x128"
@@ -49,7 +49,7 @@
       "size" : "256x256"
     },
     {
-      "filename" : "DockPhobiaAppIcon512 1.png",
+      "filename" : "DockPhobiaAppIcon512.png",
       "idiom" : "mac",
       "scale" : "1x",
       "size" : "512x512"
