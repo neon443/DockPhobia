@@ -8,14 +8,33 @@ on:
 
 jobs:
   build:
-    name: Build and analyse default scheme using xcodebuild command
+    name: Build and archive .app without signing
     runs-on: macos-latest
 
     steps:
-      - name: Checkout
+      - name: Checkout repository
         uses: actions/checkout@v4
-      - name: Build
-        env:
-          scheme: ${{ 'default' }}
+
+      - name: Build app
         run: |
-          xcodebuild archive
+          xcodebuild archive \
+            -project DockPhobia.xcodeproj \
+            -scheme DockPhobia \
+            -configuration Release \
+            -archivePath DockPhobia.xcarchive \
+            CODE_SIGN_IDENTITY="" \
+            CODE_SIGNING_REQUIRED=NO \
+            CODE_SIGNING_ALLOWED=NO
+
+          cp -R DockPhobia.xcarchive/Products/Applications/DockPhobia.app ./
+          zip -r DockPhobia.zip DockPhobia.app
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: DockPhobia.app
+          path: DockPhobia.zip
+          if-no-files-found: error
+          retention-days: 90
+          compression-level: 9
+          overwrite: true
