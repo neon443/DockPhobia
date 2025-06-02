@@ -7,13 +7,13 @@ PUBLIC "-//W3C//DTD SVG 1.1//EN"
  <!--glyph: "100ACC", point size: 100.0, font version: "20.0d10e1", template writer version: "138.0.0"-->
  <style>.defaults {-sfsymbols-wiggle-style:counterClockwise}
 
-.monochrome-0 {-sfsymbols-motion-group:0;-sfsymbols-layer-tags:cursorarrow}
+.monochrome-0 {}
 
-.multicolor-0:tintColor {-sfsymbols-motion-group:0;-sfsymbols-layer-tags:cursorarrow}
+.multicolor-0:tintColor {}
 
-.hierarchical-0:primary {-sfsymbols-motion-group:0;-sfsymbols-layer-tags:cursorarrow}
+.hierarchical-0:primary {}
 
-.SFSymbolsPreviewWireframe {fill:none;opacity:1.0;stroke:black;stroke-width:0.5}
+.SFSymbolsPreview007AFF {fill:#007AFF;opacity:1.0}
 </style>
  <g id="Notes">
   <rect height="2200" id="artboard" style="fill:white;opacity:1" width="3300" x="0" y="0"/>
@@ -58,8 +58,8 @@ PUBLIC "-//W3C//DTD SVG 1.1//EN"
   <text style="stroke:none;fill:black;font-family:sans-serif;font-size:13;font-weight:bold;" transform="matrix(1 0 0 1 1289 1953)">Exporting</text>
   <text style="stroke:none;fill:black;font-family:sans-serif;font-size:13;" transform="matrix(1 0 0 1 1289 1971)">Symbols should be outlined when exporting to ensure the</text>
   <text style="stroke:none;fill:black;font-family:sans-serif;font-size:13;" transform="matrix(1 0 0 1 1289 1989)">design is preserved when submitting to Xcode.</text>
-  <text id="template-version" style="stroke:none;fill:black;font-family:sans-serif;font-size:13;text-anchor:end;" transform="matrix(1 0 0 1 3036 1933)">Template v.6.0</text>
-  <text style="stroke:none;fill:black;font-family:sans-serif;font-size:13;text-anchor:end;" transform="matrix(1 0 0 1 3036 1951)">Requires Xcode 16 or greater</text>
+  <text id="template-version" style="stroke:none;fill:black;font-family:sans-serif;font-size:13;text-anchor:end;" transform="matrix(1 0 0 1 3036 1933)">Template v.4.0</text>
+  <text style="stroke:none;fill:black;font-family:sans-serif;font-size:13;text-anchor:end;" transform="matrix(1 0 0 1 3036 1951)">Requires Xcode 14 or greater</text>
   <text id="descriptive-name" style="stroke:none;fill:black;font-family:sans-serif;font-size:13;text-anchor:end;" transform="matrix(1 0 0 1 3036 1969)">Generated from cursorarrow</text>
   <text style="stroke:none;fill:black;font-family:sans-serif;font-size:13;text-anchor:end;" transform="matrix(1 0 0 1 3036 1987)">Typeset at 100.0 points</text>
   <text style="stroke:none;fill:black;font-family:sans-serif;font-size:13;" transform="matrix(1 0 0 1 263 726)">Small</text>
@@ -91,13 +91,13 @@ PUBLIC "-//W3C//DTD SVG 1.1//EN"
  </g>
  <g id="Symbols">
   <g id="Black-S" transform="matrix(1 0 0 1 2897.56 696)">
-   <path class="monochrome-0 multicolor-0:tintColor hierarchical-0:primary SFSymbolsPreviewWireframe" d="M55.0293-2.39258L38.3301-40.6738L32.373-27.9785L56.25-26.4648C61.3281-26.123 63.7695-31.7383 60.2051-35.3027L19.4336-76.1719C16.0645-79.541 10.9375-77.5391 10.8398-72.7539L9.76562-15.332C9.66797-10.0586 15.5273-7.86133 18.9941-11.7676L34.1309-28.9551L20.752-34.4727L36.6211 5.12695C38.0371 8.69141 41.0645 9.375 44.1406 8.25195L51.9043 5.37109C55.1758 4.15039 56.4941 0.976562 55.0293-2.39258Z"/>
+   <path class="monochrome-0 multicolor-0:tintColor hierarchical-0:primary SFSymbolsPreview007AFF" d="M55.0293-2.39258L38.3301-40.6738L32.373-27.9785L56.25-26.4648C61.3281-26.123 63.7695-31.7383 60.2051-35.3027L19.4336-76.1719C16.0645-79.541 10.9375-77.5391 10.8398-72.7539L9.76562-15.332C9.66797-10.0586 15.5273-7.86133 18.9941-11.7676L34.1309-28.9551L20.752-34.4727L36.6211 5.12695C38.0371 8.69141 41.0645 9.375 44.1406 8.25195L51.9043 5.37109C55.1758 4.15039 56.4941 0.976562 55.0293-2.39258Z"/>
   </g>
   <g id="Regular-S" transform="matrix(1 0 0 1 1417.18 696)">
-   <path class="monochrome-0 multicolor-0:tintColor hierarchical-0:primary SFSymbolsPreviewWireframe" d="M48.6328-1.85547L34.7168-34.1797L32.7637-30.6641L52.3926-29.541C55.2246-29.3457 56.543-32.373 54.541-34.4238L15.4297-73.7305C13.5742-75.5859 10.8398-74.5605 10.791-71.9238L9.81445-16.6992C9.76562-13.8184 12.9883-12.5977 14.8926-14.7949L27.3926-28.8086L23.584-30.0293L36.9141 3.02734C37.5 4.44336 38.916 5.12695 40.1855 4.54102L47.4609 1.5625C48.7793 1.02539 49.2188-0.488281 48.6328-1.85547Z"/>
+   <path class="monochrome-0 multicolor-0:tintColor hierarchical-0:primary SFSymbolsPreview007AFF" d="M48.6328-1.85547L34.7168-34.1797L32.7637-30.6641L52.3926-29.541C55.2246-29.3457 56.543-32.373 54.541-34.4238L15.4297-73.7305C13.5742-75.5859 10.8398-74.5605 10.791-71.9238L9.81445-16.6992C9.76562-13.8184 12.9883-12.5977 14.8926-14.7949L27.3926-28.8086L23.584-30.0293L36.9141 3.02734C37.5 4.44336 38.916 5.12695 40.1855 4.54102L47.4609 1.5625C48.7793 1.02539 49.2188-0.488281 48.6328-1.85547Z"/>
   </g>
   <g id="Ultralight-S" transform="matrix(1 0 0 1 532.086 696)">
-   <path class="monochrome-0 multicolor-0:tintColor hierarchical-0:primary SFSymbolsPreviewWireframe" d="M41.7305-2.67285L28.4957-33.8164L27.3145-32.2988L43.9009-31.6299C45.2345-31.5708 45.9625-33.0542 45.0504-34.1514L12.4781-70.2793C11.5308-71.3174 9.79542-70.6099 9.83741-69.2447L10.7226-21.4672C10.7646-20.0849 12.4434-19.4091 13.3486-20.4711L24.7588-32.2143L22.4033-31.8003L35.3701-0.151342C35.6836 0.628936 36.5547 0.949252 37.3247 0.635773L40.9673-0.7534C41.7408-1.06346 42.044-1.94139 41.7305-2.67285Z"/>
+   <path class="monochrome-0 multicolor-0:tintColor hierarchical-0:primary SFSymbolsPreview007AFF" d="M41.7305-2.67285L28.4957-33.8164L27.3145-32.2988L43.9009-31.6299C45.2345-31.5708 45.9625-33.0542 45.0504-34.1514L12.4781-70.2793C11.5308-71.3174 9.79542-70.6099 9.83741-69.2447L10.7226-21.4672C10.7646-20.0849 12.4434-19.4091 13.3486-20.4711L24.7588-32.2143L22.4033-31.8003L35.3701-0.151342C35.6836 0.628936 36.5547 0.949252 37.3247 0.635773L40.9673-0.7534C41.7408-1.06346 42.044-1.94139 41.7305-2.67285Z"/>
   </g>
  </g>
 </svg>
