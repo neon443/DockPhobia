@@ -4,7 +4,7 @@
         <img src="https://github.com/neon443/DockPhobia/blob/main/DockPhobia/Resources/Assets.xcassets/AppIcon.appiconset/DockPhobiaAppIcon.png?raw=true" title="dockphobia" alt="dockphobia icon" width="150" />
     </p>
       <h3>DockPhobia</h3>
-	    <p>
+        <p>
         <a href="https://github.com/neon443/DockPhobia/releases/latest/download/DockPhobia.dmg">
             download
             <img alt="GitHub Release" src="https://img.shields.io/github/v/release/neon443/DockPhobia">
@@ -21,6 +21,14 @@
 </div>
 
 ![GitHub Downloads (all assets, all releases)](https://img.shields.io/github/downloads/neon443/DockPhobia/total)
+
+<div align="center">
+  <a href="https://shipwrecked.hackclub.com/?t=ghrm" target="_blank">
+    <img src="https://hc-cdn.hel1.your-objectstorage.com/s/v3/739361f1d440b17fc9e2f74e49fc185d86cbec14_badge.png" 
+         alt="This project is part of Shipwrecked, the world's first hackathon on an island!" 
+         style="width: 25%;">
+  </a>
+</div>
 
 Have you ever wanted to use your Dock?
 well now you cant
